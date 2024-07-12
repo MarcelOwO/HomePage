@@ -1,7 +1,33 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<MudContainer Class="mt-16 px-8" MaxWidth="MaxWidth.False">
+    <MudGrid>
+        <MudItem Class="d-flex">
+            <MudItem xs="6" sm="6" md="4">
+                <MudPaper Elevation="2" Class="pa-4" Margin="20">
+                    <MudImage Fluid="true" Src="Images/Sonas/Avali Headshot.png" Alt="Avali Headshot" Elevation="25" Class="rounded-lg"/>
+                </MudPaper>
+            </MudItem>
 
-<h1>Hello, world!</h1>
+            <MudItem xs="6" sm="6" md="4">
+                <MudPaper Elevation="2" Class="pa-4">
+                    <MudText Align="Align.Center">
+                        <ul>
+                            <li>Marcel Sigl</li>
+                            <li>Software Dev</li>
+                            <li>Photographer</li>
+                            <li>Gamer</li>
+                            <li>VRChat Avatar Creator</li>
+                        </ul>
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+        </MudItem>
+        <MudItem>
 
-Welcome to your new app.
+            <MudPaper>
+
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
