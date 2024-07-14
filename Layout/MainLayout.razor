@@ -10,7 +10,13 @@
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@(new Action<object>((e) => DrawerToggle()))"/>
         <MudSpacer/>
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End"/>
+        <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
+            <MudButton>@_buttonText</MudButton>
+            <MudMenu Icon="@Icons.Material.Filled.ArrowDropDown" Style="align-self: auto;">
+                <MudMenuItem OnClick="() => SetButton(0)">En</MudMenuItem>
+                <MudMenuItem OnClick="() => SetButton(1)">De</MudMenuItem>
+            </MudMenu>
+        </MudButtonGroup>
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" Elevation="2">
         <MudDrawerHeader>
@@ -19,8 +25,10 @@
         <NavMenu/>
     </MudDrawer>
     <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.Medium" >
-            @Body
+        <MudContainer Class="mt-16 px-8" MaxWidth="MaxWidth.False">
+            <MudPaper Class="pa-16 ma-2" Elevation="3">
+                @Body
+            </MudPaper> 
         </MudContainer>
     </MudMainContent>
 </MudLayout>
@@ -53,6 +61,21 @@
                 Primary = Colors.Yellow.Darken3,
             }
         };
+    }
+
+    private string _buttonText = "En";
+
+    private void SetButton(int id)
+    {
+        switch (id)
+        {
+            case 0:
+                _buttonText = "En";
+                break;
+            case 1:
+                _buttonText = "De";
+                break;
+        }
     }
 
 }

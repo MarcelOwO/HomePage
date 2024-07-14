@@ -18,4 +18,8 @@
       <_ContentIncludedByDefault Remove="wwwroot\css\app.css" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Include="wwwroot\Services\DictionaryMudLocalizer.cs" />
+    </ItemGroup>
+
 </Project>
