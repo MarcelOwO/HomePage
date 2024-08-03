@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta content="MarcelOwO Personal HomePage" property="og:title"/>
+    <meta content="Just a simple sideproject for me and another chance for me to improve my coding skills" property="og:description"/>
+    <meta content="https://marcel-sigl.dev" property="og:url"/>
+    <meta content="https://marcel-sigl.dev/Images/Sonas/Avali%20Headshot.png" property="og:image"/>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>HomePage</title>
+    <title>Marcel's HomePage</title>
     <base href="/"/>
-    <link rel="stylesheet" href="css/app.css"/>
-    <link rel="icon" type="image/png" href="favicon.png"/>
-    <link href="HomePage.styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/site.css"/>
+    <link rel="icon" type="image/png" href="favicon.jpg"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="_content/Radzen.Blazor/css/material-base.css"/>
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"> 
-
+    <link href="css/site.css" rel="stylesheet"/>
 </head>
 
 <body>
+
 <div id="app">
-    <svg class="loading-progress">
-        <circle r="40%" cx="50%" cy="50%"/>
-        <circle r="40%" cx="50%" cy="50%"/>
-    </svg>
     <div class="loading-progress-text"></div>
 </div>
 
@@ -33,6 +31,8 @@
 <script src="_content/MudBlazor/MudBlazor.min.js"></script>
 <script src="_framework/blazor.webassembly.js"></script>
 <script src="_content/Radzen.Blazor/Radzen.Blazor.js?v=@(typeof(Radzen.Colors).Assembly.GetName().Version)"></script>
+<script src="js/ScrollDetection.js"></script>
+<script src="js/site.js"></script>
 </body>
 
 </html>

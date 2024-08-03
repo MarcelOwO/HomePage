@@ -1,5 +1,78 @@
 ﻿@page "/Projects"
 
-@code {
+@inject IJSRuntime JsRuntime
+<MudGrid>
+    <MudItem xs-4>
+        <MudPaper id="paper1" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+            <MudStack>
+                <MudText Typo="Typo.h3" Color="Color.Primary">LED Matrix</MudText> <MudImage/>
+                <MudText Typo="Typo.body2">A school project that is a custom build LED matrix using a neo pixel led strip as the leds used. The matrix is controlled by an arduino mega.
+                    </MudText>
+            </MudStack>
 
+        </MudPaper>
+    </MudItem>
+    <MudItem xs-4>
+        <MudPaper id="paper2" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+            <MudStack>
+                <MudText Typo="Typo.h3" Color="Color.Primary">Personal Website</MudText> <MudImage/>
+                <MudText Typo="Typo.body2">currently I am hosting 2 simple websites using .net blazor.</MudText>
+            </MudStack>
+
+        </MudPaper>
+    </MudItem>
+    <MudItem xs-4>
+        <MudPaper id="paper3" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+            <MudStack>
+                <MudText Typo="Typo.h3" Color="Color.Primary">Proxmox Server</MudText> <MudImage/>
+                <MudText Typo="Typo.body2">I reused my old work laptop that i bought from my old company and installed proxmox to host a simple home server on that using proxmox.</MudText>
+            </MudStack>
+
+        </MudPaper>
+    </MudItem>
+    <MudItem xs-4>
+        <MudPaper id="paper4" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+            <MudStack>
+                <MudText Typo="Typo.h3" Color="Color.Primary">Wordle .net</MudText> <MudImage/>
+                <MudText Typo="Typo.body2">A small .net maui or wpf app, I don't remember anymore, that is pretty much just a simple wordle game.</MudText>
+            </MudStack>
+
+        </MudPaper>
+    </MudItem>
+    <MudItem xs-4>
+        <MudPaper id="paper5" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+            <MudStack>
+                <MudText Typo="Typo.h3" Color="Color.Primary">Zipper</MudText> <MudImage/>
+                <MudText Typo="Typo.body2">Small .net MAUI app that allows me to annoy my friend if they want any files from me. The app just zipps a file n amount of time.</MudText>
+            </MudStack>
+
+        </MudPaper>
+    </MudItem>
+    <MudItem xs-4>
+        <MudPaper id="paper6" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+            <MudStack>
+                <MudText Tyro="Typo.h3" Color="Color.Primary">Tesla Coil</MudText> <MudImage/>
+                <MudText Typo="Typo.body2">Small electronics project. It was a configured set of components with instructions on how to build a tesla coil.</MudText>
+            </MudStack>
+
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+@code
+{
+    private DotNetObjectReference<Projects>? _dotNetHelper;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _dotNetHelper = DotNetObjectReference.Create(this);
+            await JsRuntime.InvokeVoidAsync("detectScroll", "paper1", _dotNetHelper);
+            await JsRuntime.InvokeVoidAsync("detectScroll", "paper2", _dotNetHelper);
+            await JsRuntime.InvokeVoidAsync("detectScroll", "paper3", _dotNetHelper);
+            await JsRuntime.InvokeVoidAsync("detectScroll", "paper4", _dotNetHelper);
+            await JsRuntime.InvokeVoidAsync("detectScroll", "paper5", _dotNetHelper);
+        }
+    }
 }

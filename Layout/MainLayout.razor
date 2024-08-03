@@ -1,16 +1,15 @@
-﻿@using Colors = MudBlazor.Colors
-@using Variant = MudBlazor.Variant
+﻿@using Variant = MudBlazor.Variant
 @inherits LayoutComponentBase
 
-<MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode"/>
-
+<MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_myCustomTheme"/>
 
 <MudPopoverProvider/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 <MudLayout>
-    <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@(new Action<object>((e) => DrawerToggle()))"/>
+
+    <MudAppBar Elevation="23">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="() => DrawerToggle()"/>
         <MudSpacer/>
         <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
             <MudButton>@_buttonText</MudButton>
@@ -20,21 +19,22 @@
             </MudMenu>
         </MudButtonGroup>
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="2">
+
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="23">
         <MudDrawerHeader>
-            <MudText Typo="Typo.h5" Class="mt-1">Marcel</MudText>
+            <MudText Typo="Typo.h5" Class="mt-1" Color="Color.Primary">Marcel</MudText>
         </MudDrawerHeader>
+        
         <NavMenu/>
+        
     </MudDrawer>
+
     <MudMainContent>
-        <MudContainer Class="mt-16 px-8" MaxWidth="MaxWidth.False">
-            <MudPaper Class="pa-16 ma-2" Elevation="3">
-                @Body
-            </MudPaper> 
+        <MudContainer MaxWidth="MaxWidth.Large">
+            @Body
         </MudContainer>
     </MudMainContent>
 </MudLayout>
-
 
 @code {
     bool _drawerOpen = true;
@@ -45,25 +45,40 @@
     }
 
     private bool _isDarkMode;
-    private MudThemeProvider _mudThemeProvider;
+    private MudThemeProvider? _mudThemeProvider;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            _isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            _isDarkMode = await _mudThemeProvider?.GetSystemPreference()!;
+            //DarkModeService.ToggleDarkMode(_isDarkMode);
             StateHasChanged();
         }
-
-//change sona depending on light or dark mode and also the image
-        _mudThemeProvider.Theme = new MudTheme()
-        {
-            PaletteDark =
-            {
-                Primary = Colors.Yellow.Darken3,
-            }
-        };
     }
+
+    readonly MudTheme _myCustomTheme = new()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#44cdfa",
+            Secondary = "#ffffff",
+            AppbarBackground = "#818181",
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Primary = "#fcc98b",
+            Secondary = "#99a3b8",
+            AppbarBackground = "#13171f",
+        },
+
+        LayoutProperties = new LayoutProperties()
+        {
+            DrawerWidthLeft = "260px",
+            DrawerWidthRight = "300px"
+        }
+    };
+
 
     private string _buttonText = "En";
 

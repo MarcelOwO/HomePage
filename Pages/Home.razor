@@ -1,28 +1,47 @@
 ﻿@page "/"
 
-<MudGrid CLass="d-flex flex-grow-1"  Justify="Justify.Center">
-    <MudItem Class="object-left" xs="6" sm="6" md="4">
-        <MudImage Fluid="true" Src="Images/Sonas/Avali Headshot.png" Alt="Avali Headshot" Elevation="25" Class="rounded-lg"/>
-    </MudItem>
-    
-    <MudSpacer />
-    <MudItem xs="6" sm="6" md="4">
-        <MudPaper Elevation="2" Class="pa-4">
-            <MudText Typo="Typo.h3" Align="Align.Center">Marcel Sigl</MudText>
-            <MudText Align="Align.Left">
-                <ul>
-                    <li>Software Dev</li>
-                    <li>Photographer</li>
-                    <li>Gamer</li>
-                    <li>VRChat Avatar Creator</li>
-                </ul>
-            </MudText>
-        </MudPaper>
-    </MudItem>
-    <MudItem>
+@inject IJSRuntime JsRuntime
 
-        <MudPaper>
+<MudPaper id="paper1" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+    <MudGrid CLass="d-flex flex-grow-1" Justify="Justify.Center">
 
-        </MudPaper>
-    </MudItem>
-</MudGrid>
+        <MudItem Class="object-left" xs="6" sm="6" md="4">
+            <MudImage Fluid="true" Src="https://marcelhomepagestorage.blob.core.windows.net/homepagestorage/Avali%20Headshot.png" Alt="Avali Headshot" Elevation="25" Class="rounded-lg"/>
+        </MudItem>
+
+        <MudSpacer/>
+
+        <MudItem xs="6" sm="6" md="4">
+            <MudStack>
+                <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Primary">Marcel Sigl</MudText>
+                <MudText Align="Align.Left">
+                    <ul>
+                        <li>Software Dev</li>
+                        <li>Photographer</li>
+                        <li>Gamer</li>
+                        <li>VRChat Avatar Creator</li>
+                    </ul>
+                </MudText>
+            </MudStack>
+        </MudItem>
+        <MudItem>
+            <MudPaper>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudPaper>
+
+
+@code
+{
+    private DotNetObjectReference<Home>? _dotNetHelper;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _dotNetHelper = DotNetObjectReference.Create(this);
+            await JsRuntime.InvokeVoidAsync("detectScroll", "paper1", _dotNetHelper);
+        }
+    }
+}

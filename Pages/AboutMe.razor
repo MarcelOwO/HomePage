@@ -1,66 +1,93 @@
 ﻿@page "/AboutMe"
+@using AlignItems = MudBlazor.AlignItems
 
-<MudTimeline>
+@inject IJSRuntime JsRuntime
 
-    <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
-        <ItemOpposite>
-            <MudText Color="Color.Primary" Typo="Typo.h5">Sept 2017 - Juli 2020</MudText>
-        </ItemOpposite>
+<MudPaper id="paper1" Class="pa-15 ma-10 d-flex"  Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+    <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
+        <MudText Typo="Typo.h2" Color="Color.Primary">Education</MudText>
+        <MudTimeline>
+            <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
 
-        <ItemContent>
-            <MudText Color="Color.Info" Typo="Typo.h6" GutterBottom="true">Berufsausbildung - Mechatroniker</MudText>
-            <MudText>
-                <ul>
-                    <li>Flottweg SE + Berufsschule 1 Landshut</li>
-                    <li>Ergebnis: 83 Punkte</li>
-                    <li>Notendurchschnitt: 1.4</li>
-                </ul>
-            </MudText>
-        </ItemContent>
-    </MudTimelineItem>
+                <ItemOpposite>
+                    <MudText Color="Color.Primary" Typo="Typo.h5">September 2017 - Juli 2020</MudText>
+                </ItemOpposite>
 
-    <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
-        <ItemContent >
-            <MudText Align="Align.Right" Color="Color.Primary" Typo="Typo.h5">Sept 2020 - Juli 2021</MudText>
-        </ItemContent>
+                <ItemContent>
+                    <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Appreticeship, Mechatronic</MudText>
+                    <MudText>Flottweg SE</MudText>
+                </ItemContent>
+            </MudTimelineItem>
 
-        <ItemOpposite>
-            <MudText Color="Color.Info" Typo="Typo.h6" GutterBottom="true">Fachabitur</MudText>
-            <MudText>
-                <ul>
-                    <li>Staatliche Berufsoberschule 1 Landshut</li>
-                    <li>Notendurchschnitt: 2.6</li>
-                </ul>
-            </MudText>
-        </ItemOpposite>
-    </MudTimelineItem>
+            <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
+                <ItemOpposite >
+                    <MudText Align="Align.Right" Color="Color.Primary" Typo="Typo.h5">September 2020 - Juli 2021</MudText>
+                </ItemOpposite>
 
-    <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
-        <ItemOpposite>
-            <MudText Color="Color.Primary" Typo="Typo.h5">Okt 2021 - Aktuell</MudText>
-        </ItemOpposite>
+                <ItemContent>
+                    <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Specialized University Entrance Qualification</MudText>
+                    <MudText>
+                        Staatliche Berufsoberschule 1 Landshut
+                    </MudText>
+                </ItemContent>
+            </MudTimelineItem>
 
-        <ItemContent>
-            <MudText Color="Color.Info" Typo="Typo.h6" GutterBottom="true">Studium - Bachelor Informatik</MudText>
-            <ul>
-                <li>Hochschule Landshut</li>
-                <li>Aktueller Notendurchschnitt: 2.8</li>
-            </ul>
-        </ItemContent>
-    </MudTimelineItem>
+            <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
+                <ItemOpposite>
+                    <MudText Color="Color.Primary" Typo="Typo.h5">Oktober 2021 - Now</MudText>
+                </ItemOpposite>
 
-    <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
-        <ItemOpposite>
-            <MudText Color="Color.Primary" Typo="Typo.h5">Nov 2023 - Juli 2024</MudText>
-        </ItemOpposite>
+                <ItemContent>
+                    <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Bachelor, Computer Science</MudText>
+                    <MudText>
+                        University of applied science Landshut
+                    </MudText>
+                </ItemContent>
+            </MudTimelineItem>
 
-        <ItemContent>
-            <MudText Align="Align.Right" Color="Color.Info" Typo="Typo.h6" GutterBottom="true">Praktikum + Werkstuden Usaneers</MudText>
-        </ItemContent>
-    </MudTimelineItem>
 
-</MudTimeline>
+        </MudTimeline>
+    </MudStack>
+</MudPaper>
 
-@code {
 
+<MudPaper id="paper2" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+    <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
+        <MudText Typo="Typo.h2" Color="Color.Primary">Work Experience</MudText>
+        
+        <MudTimeline>
+            <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
+                <ItemOpposite>
+                    <MudText Color="Color.Primary" Typo="Typo.h5">November 2023 - March 2024</MudText>
+                </ItemOpposite>
+                <ItemContent>
+                    <MudText Align="Align.Right" Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Internship, Usaneers</MudText>
+                </ItemContent>
+            </MudTimelineItem>
+            
+            <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
+                <ItemOpposite>
+                    <MudText Color="Color.Primary" Typo="Typo.h5">April 2024 - July 2024</MudText>
+                </ItemOpposite>
+                <ItemContent>
+                    <MudText Align="Align.Right" Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Working Student, Usaneers</MudText>
+                </ItemContent>
+            </MudTimelineItem>
+        </MudTimeline>
+    </MudStack>
+</MudPaper>
+@code
+{
+    private DotNetObjectReference<AboutMe> _dotNetHelper;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _dotNetHelper = DotNetObjectReference.Create(this);
+
+            await JsRuntime.InvokeVoidAsync("detectScroll", "paper1", _dotNetHelper);
+        await JsRuntime.InvokeVoidAsync("detectScroll", "paper2", _dotNetHelper);
+        }
+    }
 }
