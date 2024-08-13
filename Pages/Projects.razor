@@ -1,66 +1,100 @@
 ﻿@page "/Projects"
 
 @inject IJSRuntime JsRuntime
-<MudGrid>
-    <MudItem xs-4>
-        <MudPaper id="paper1" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
-            <MudStack>
-                <MudText Typo="Typo.h3" Color="Color.Primary">LED Matrix</MudText> <MudImage/>
-                <MudText Typo="Typo.body2">A school project that is a custom build LED matrix using a neo pixel led strip as the leds used. The matrix is controlled by an arduino mega.
-                    </MudText>
-            </MudStack>
 
-        </MudPaper>
-    </MudItem>
-    <MudItem xs-4>
-        <MudPaper id="paper2" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+<MudStack>
+    @foreach (var project in _projects)
+    {
+        <MudPaper id=@project.Key Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
             <MudStack>
-                <MudText Typo="Typo.h3" Color="Color.Primary">Personal Website</MudText> <MudImage/>
-                <MudText Typo="Typo.body2">currently I am hosting 2 simple websites using .net blazor.</MudText>
+                <MudText Typo="Typo.h3" Color="Color.Primary">@project.Key</MudText>
+                <MudText Typo="Typo.body2">
+                    @project.Value
+                </MudText>
             </MudStack>
-
         </MudPaper>
-    </MudItem>
-    <MudItem xs-4>
-        <MudPaper id="paper3" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
-            <MudStack>
-                <MudText Typo="Typo.h3" Color="Color.Primary">Proxmox Server</MudText> <MudImage/>
-                <MudText Typo="Typo.body2">I reused my old work laptop that i bought from my old company and installed proxmox to host a simple home server on that using proxmox.</MudText>
-            </MudStack>
-
-        </MudPaper>
-    </MudItem>
-    <MudItem xs-4>
-        <MudPaper id="paper4" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
-            <MudStack>
-                <MudText Typo="Typo.h3" Color="Color.Primary">Wordle .net</MudText> <MudImage/>
-                <MudText Typo="Typo.body2">A small .net maui or wpf app, I don't remember anymore, that is pretty much just a simple wordle game.</MudText>
-            </MudStack>
-
-        </MudPaper>
-    </MudItem>
-    <MudItem xs-4>
-        <MudPaper id="paper5" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
-            <MudStack>
-                <MudText Typo="Typo.h3" Color="Color.Primary">Zipper</MudText> <MudImage/>
-                <MudText Typo="Typo.body2">Small .net MAUI app that allows me to annoy my friend if they want any files from me. The app just zipps a file n amount of time.</MudText>
-            </MudStack>
-
-        </MudPaper>
-    </MudItem>
-    <MudItem xs-4>
-        <MudPaper id="paper6" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
-            <MudStack>
-                <MudText Tyro="Typo.h3" Color="Color.Primary">Tesla Coil</MudText> <MudImage/>
-                <MudText Typo="Typo.body2">Small electronics project. It was a configured set of components with instructions on how to build a tesla coil.</MudText>
-            </MudStack>
-
-        </MudPaper>
-    </MudItem>
-</MudGrid>
+    }
+</MudStack>
 
 @code
 {
+    private Dictionary<string, string> _projects = new()
+    {
+        ["LEDMatrix"] = @"
+                         A small group project during my apprenticeship.
+                         The project goal was to build a working led matrix. I was mainly responsible for the code running the matrix and setting up the electronics that was controlling everything.
+                         The matrix itself was made out of a neo-pixel led strip that we cut up and glued on wooden board, that was made by another teammate.
+                         The matrix was controlled by an arduino mega, a bit overkill but we had on laying around.
+                         The code that was running the matrix was rather simple. As i wasn't too familiar with coding at the time. I sourced most code from the web.
+                         The main feature that I implemented were control flow and the control logic. The displayed images and games were sourced from the web.
+                         ",
+        ["Websites"] = @"
+                                           I am currently hosting 3 websites that are built with the same tech stack, namely .net blazor.
+                                           Also also use the mudblazor library for the frontend.
+                                           The applications were originally hosted on my private proxmox server but out of laziness I moved them to azure, also I was getting some weird network problems since I do not have enough bandwidth.
+                                           The websites are my homepage, a page to advertise my avatar comissions and another website that is supposed be a planned for my friend group that would allow them to make it easier to go to conventions.
+                                           Though the last one is still in development.
+                               ",
+        ["ProxmoxServer"] = @"
+                                             I was inspired by a friend who was hosting a complete proxmox server at home to also host something similar.
+                                             So I reused on of my older laptops that I got from my old workplace to use it as a proxmox server.
+                                             The server was mainly used to host a couple small services and to play around with networking.
+                                             I had a container running that was hosting nginx so that I could host some websites.
+                                             I had a container for my homepage, for pi-hole, next-cloud and a couple other services.
+                                             The server is currently not in use as I moved some of my services to azure and am also not in need of the other ones.
+                             ",
+        ["Wordle"] = @"
+                                     I small project that I built with .net and WPF. 
+                                     It is just a small desktop application that runs the game wordle locally.
+                     ",
+        ["Zipper"] = @"
+                                                           A small .net desktop application built on maui with blazor.
+                                     The application was built to pretty much annoy my non so tech savvy friends.
+                                     The app allows me to select a file on my desktop and then enter a number, which would correspond to the number of times the file would be zipped.
+                                     It would then allow me to save the file where I want.
+                     ",
+        ["TeslaCoil"] = @"
+                                                                   A small  project  that was based on a kit one could buy from a company called oneTesla.
+                             It is a kit for building a small musical tesla coil.
+                             Annoying while ordering it was cought by customs and I needed to pay a fee to get it.
+                             At least it was categorized as a instrument so I had to pay less.
+                             Anyway the kit was a simple solid state tesla coil with a external controller that would send light signal to the coil to play music.
+                             Apart from having some issues on applying enough varnish to the coil and the disgusting smell of ozone while using it, it was a fun project.
+                         ",
+        ["DiscordBot"] = @" 
+                          A small discord bot that I built with d sharp plus.
+                          The bot would be controlled by a desktop client built with wpf, that would give you the ability to select mp3 files from your computer and load them.
+                          The bot would then join the voice channel that was programmed into.
+                          And in the UI you could then select which one of those song you want to play.
+                          ",
+        ["Arch"] = @"
+To learn more about linux and using it for development and university I wanted to try out arch linux.
+I have already tried other distros like unbuntu, debain and rasbian, but I wanted to try arch since it seemed rather popular.
+Anyway I have setup a dual boot environment on my laptop with windows 11 and arch linux.
+I am currently using kde as the desktop environment and before that I was using hyprland.
+
+",
+        ["ChatGBTDesktopApp"] = @"
+A small console application that uses the openai api to chat with the gbt-3 turbo model at the time.
+The app also supported some commands to clear the context and to switch models.
+",
+        ["GameEngine"] = @"
+A small project on the side, where I was following a tutorial to build a small game engine using c++.
+I haven't gotten too far into the project so currently it is just a application that calls the basic windows api to create a new window.
+And in this window you can control each pixel manually.
+",
+        ["UnityMobileApp"] = @"
+A small unity mobile app that I built for my android phone. 
+The app renders a small environment with a 3d model in the center.
+You could swipe the screen to change the camera angle.
+",
+        ["MassDownloader"] = @"
+A small console app that is used to download pictures in mass from a picture board.
+The app would download the database file with all the links and tags stored and you could select filter for the images you want downloaded.
+
+",
+    };
+
     private DotNetObjectReference<Projects>? _dotNetHelper;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -68,11 +102,10 @@
         if (firstRender)
         {
             _dotNetHelper = DotNetObjectReference.Create(this);
-            await JsRuntime.InvokeVoidAsync("detectScroll", "paper1", _dotNetHelper);
-            await JsRuntime.InvokeVoidAsync("detectScroll", "paper2", _dotNetHelper);
-            await JsRuntime.InvokeVoidAsync("detectScroll", "paper3", _dotNetHelper);
-            await JsRuntime.InvokeVoidAsync("detectScroll", "paper4", _dotNetHelper);
-            await JsRuntime.InvokeVoidAsync("detectScroll", "paper5", _dotNetHelper);
+             foreach (var project in _projects)
+            {
+                await JsRuntime.InvokeVoidAsync("detectScroll", project.Key, _dotNetHelper);
+            }
         }
     }
 }

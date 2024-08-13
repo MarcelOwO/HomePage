@@ -2,52 +2,51 @@
 <MudPaper id="paper1" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
     <MudStack>
         <MudText Typo="Typo.h3" Color="Color.Primary">Gear</MudText>
-        <MudText Typo="Typo.body2" Color="Color.Secondary">Camera: Sony A7r4</MudText>
-
+        @foreach (var item in _gear)
+        {
+            <MudText Typo="Typo.body2" Color="Color.Secondary">@item</MudText>
+        }
     </MudStack>
 </MudPaper>
-<MudPaper id="paper1" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
-    <MudGrid>
-        <MudItem xs="12">
-            <MudText Align="Align.Center" Typo="Typo.h3" Color="Color.Primary">Images</MudText>
-        </MudItem>
 
-        <MudItem xs="12">
-            <MudGrid>
+<MudPaper id="paper2" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+    <MudStack>
+        <MudText Align="Align.Center" Typo="Typo.h3" Color="Color.Primary">Images</MudText>
+        <MudGrid>
+            @foreach (var gallery in _gallaries)
+            {
                 <MudItem xs="6">
                     <MudPaper Class="pa-16 ma-2" Elevation="23" Square="true">
-                        <MudStack>
-                            <MudText Typo="Typo.h5" Color="Color.Primary">Eurofurence 25</MudText>
-                        </MudStack>
-                    </MudPaper>
-                </MudItem >
-                <MudItem xs="6">
-                    <MudPaper Class="pa-16 ma-2" Elevation="23" Square="true">
-                        <MudStack>
-                            <MudText Typo="Typo.h5" Color="Color.Primary">Furvester 5</MudText>
-                        </MudStack>
-                    </MudPaper>
-                </MudItem >
-                <MudItem xs="6">
-                    <MudPaper Class="pa-16 ma-2" Elevation="23" Square="true">
-                        <MudStack>
-                            <MudText Typo="Typo.h5" Color="Color.Primary">Eurofurence 26</MudText>
-                        </MudStack>
+                        <MudImage ObjectFit="ObjectFit.Cover" Src=@gallery.Value/>
+                        <MudText Align="Align.Center" Typo="Typo.h5" Color="Color.Primary"Class="position-absolute bottom-0 start-0 p-2 bg-dark " Style="opacity: 0.7;">@gallery.Key</MudText>
                     </MudPaper>
                 </MudItem>
-                <MudItem xs="6">
-                    <MudPaper Class="pa-16 ma-2" Elevation="23" Square="true">
-                        <MudStack>
-                            <MudText Typo="Typo.h5" Color="Color.Primary">Eurofurence 27</MudText>
-                        </MudStack>
-                    </MudPaper>
-                </MudItem>
-            </MudGrid>
-
-        </MudItem>
-    </MudGrid>
+            }
+        </MudGrid>
+    </MudStack>
 </MudPaper>
 
 @code {
+
+    private Dictionary<string, string> _gallaries = new()
+    {
+        ["Eurofurence 25"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
+        ["Furvester 5"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
+        ["Eurofurence 26"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
+        ["Eurofurence 27"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
+    };
+
+    private readonly List<string> _gear =
+    [
+        "Camera: Sony A7R4",
+        "Lens: Sigma 24-70mm f2.8 DG DN | Art",
+        "Lens: Sony FE 90mm F2.8 Macro G OSS",
+        "Lens: Sony 50mm F1.8",
+        "Lens: Tamron 24mm F2.8",
+        "Tripod: Rollei Something something",
+        "Gimbal: DJI RS 4",
+        "Flash: Sony something something",
+        "Microphone: Sony B something something",
+    ];
 
 }

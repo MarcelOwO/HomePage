@@ -1,7 +1,5 @@
 ﻿<MudPaper Width="200" Class="pa-3 ma-3" Elevation="23">
     <MudNavMenu>
-        <MudText Typo="Typo.h6" Class="px-4" Color="Color.Primary">Pages</MudText>
-        <MudDivider Class="my-2"/>
         <MudNavLink Icon="@Icons.Material.Filled.Home" Href="/">
             <MudText Align="Align.Center">Home</MudText>
         </MudNavLink>
@@ -14,20 +12,31 @@
         <MudNavLink Icon="@Icons.Material.Filled.Camera" Href="/Photography">
             <MudText Align="Align.Center">Photography</MudText>
         </MudNavLink>
-        <MudNavLink Icon="@Icons.Material.Filled.CatchingPokemon" Href="/Fursona">
-            <MudText Align="Align.Center">Fursona</MudText>
-        </MudNavLink>
         <MudNavLink Icon="@Icons.Material.Filled.PersonAdd" Href="/Avatars">
             <MudText Align="Align.Center">Avatars</MudText>
         </MudNavLink>
-        <MudNavLink Icon="@Icons.Material.Filled.PersonAdd" Href="/Events">
-            <MudText Align="Align.Center">Events</MudText>
-        </MudNavLink>
-        <MudNavLink Icon="@Icons.Material.Filled.PersonAdd" Href="/Blog">
-            <MudText Align="Align.Center">Blog</MudText>
-        </MudNavLink>
-        <MudNavLink Icon="@Icons.Material.Filled.Contacts" Href="/Contact">
-            <MudText Align="Align.Center">Contacts</MudText>
-        </MudNavLink>
     </MudNavMenu>
 </MudPaper>
+
+<MudPaper Width="200" Class="pa-3 ma-3" Elevation="23">
+    <MudStack>
+        @foreach (var contact in _contacts)
+        {
+            <MudButton Href=@contact.Value.Item1 StartIcon=@contact.Value.Item2>
+                <MudText>@contact.Key</MudText>
+            </MudButton>
+        }
+    </MudStack>
+</MudPaper>
+
+@code {
+
+    private readonly Dictionary<string, (string, string)> _contacts = new()
+    {
+        ["Twitter"] = ("https://x.com/Marcel_Sigl", @Icons.Custom.Brands.Twitter),
+        ["GitHub"] = ("https://github.com/MarcelOwO", @Icons.Custom.Brands.GitHub),
+        ["Instagram"] = ("https://www.instagram.com/marcel_sigl/ ", @Icons.Custom.Brands.Instagram),
+        ["Steam"] = ("https://steamcommunity.com/id/Marcelowo", @Icons.Custom.Brands.Steam),
+    };
+
+}
