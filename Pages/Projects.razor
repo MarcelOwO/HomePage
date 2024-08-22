@@ -2,19 +2,21 @@
 
 @inject IJSRuntime JsRuntime
 
-<MudStack>
+<MudGrid flex-wrap Class=" d-flex">
     @foreach (var project in _projects)
     {
-        <MudPaper id=@project.Key Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
-            <MudStack>
-                <MudText Typo="Typo.h3" Color="Color.Primary">@project.Key</MudText>
-                <MudText Typo="Typo.body2">
-                    @project.Value
-                </MudText>
-            </MudStack>
-        </MudPaper>
+        <MudItem xs="6">
+            <MudPaper id=@project.Key Class="pa-10 ma-5 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+                <MudStack AlignItems="AlignItems.Center">
+                    <MudText Typo="Typo.h3" Color="Color.Primary">@project.Key</MudText>
+                    <MudText Typo="Typo.body2">
+                        @project.Value
+                    </MudText>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
     }
-</MudStack>
+</MudGrid>
 
 @code
 {
@@ -93,6 +95,18 @@ A small console app that is used to download pictures in mass from a picture boa
 The app would download the database file with all the links and tags stored and you could select filter for the images you want downloaded.
 
 ",
+        ["Unity Game"] = @"
+I joined a game jam in 2024 to see what I could create in about 4 days of development.
+So I joined the GMTK game jam. The theme was 'built to scale'.
+Anyway I decided to make a horror game, since I find those the most interesting. 
+I created the game using unity hdrp and blender for the models.
+The game was about a person that was trapped in a basement and the goal was to escape.
+I haven't really finished the game and therefor didn't submit.
+It was still a fun experience, enough though I made my life harder with the choice of game.
+The game was also using analog horror as the main theme. 
+The final version allowed you to wander around the small basement and you where able to interact and  pickup some items. Like a flashlight, a key and a computer.
+THe latter was used a guide in the game.   
+",
     };
 
     private DotNetObjectReference<Projects>? _dotNetHelper;
@@ -102,7 +116,7 @@ The app would download the database file with all the links and tags stored and 
         if (firstRender)
         {
             _dotNetHelper = DotNetObjectReference.Create(this);
-             foreach (var project in _projects)
+            foreach (var project in _projects)
             {
                 await JsRuntime.InvokeVoidAsync("detectScroll", project.Key, _dotNetHelper);
             }

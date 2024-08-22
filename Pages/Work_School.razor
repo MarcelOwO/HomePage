@@ -1,11 +1,12 @@
-﻿@page "/AboutMe"
+﻿@page "/WorkExperience"
 @using AlignItems = MudBlazor.AlignItems
 
 @inject IJSRuntime JsRuntime
 
-<MudPaper id="paper1" Class="pa-15 ma-10 d-flex"  Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+<MudPaper id="paper1" Class="pa-15 ma-10 "  Elevation="23"  gap-4 Style="overflow: hidden">
     <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
         <MudText Typo="Typo.h2" Color="Color.Primary">Education</MudText>
+        <MudDivider/>
         <MudTimeline>
             <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
                 <ItemOpposite>
@@ -46,10 +47,10 @@
 </MudPaper>
 
 
-<MudPaper id="paper2" Class="pa-15 ma-10 d-flex"  Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+<MudPaper id="paper2" Class="pa-15 ma-10 "  Elevation="23"  gap-4 Style="overflow: hidden">
     <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
         <MudText Typo="Typo.h2" Color="Color.Primary">Work Experience</MudText>
-        
+        <MudDivider/>
         <MudTimeline>
             <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
                 <ItemOpposite>
@@ -73,7 +74,7 @@
 </MudPaper>
 @code
 {
-    private DotNetObjectReference<AboutMe> _dotNetHelper;
+    private DotNetObjectReference<Work_School> _dotNetHelper;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

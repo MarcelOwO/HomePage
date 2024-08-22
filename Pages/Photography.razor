@@ -1,7 +1,9 @@
 ﻿@page "/Photography"
-<MudPaper id="paper1" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+<MudPaper id="paper1" Class="pa-15 ma-10 " Elevation="23"  gap-4 Style="overflow: hidden">
     <MudStack>
-        <MudText Typo="Typo.h3" Color="Color.Primary">Gear</MudText>
+        <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Primary">Gear</MudText>
+        
+        <MudDivider/>
         @foreach (var item in _gear)
         {
             <MudText Typo="Typo.body2" Color="Color.Secondary">@item</MudText>
@@ -9,9 +11,18 @@
     </MudStack>
 </MudPaper>
 
-<MudPaper id="paper2" Class="pa-15 ma-10 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+<MudPaper id="paper2" Class="pa-15 ma-10 " Elevation="23"  gap-4 Style="overflow: hidden">
     <MudStack>
-        <MudText Align="Align.Center" Typo="Typo.h3" Color="Color.Primary">Images</MudText>
+        <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Primary">Disclaimer</MudText>
+        <MudDivider/>
+        <MudText Typo="Typo.body1">The image links aren't broken, I just haven't found a cost effective way to host my images.</MudText>
+    </MudStack>
+</MudPaper>
+
+<MudPaper id="paper3" Class="pa-15 ma-10 " Elevation="23"  gap-4 Style="overflow: hidden">
+    <MudStack>
+        <MudText Align="Align.Center" Typo="Typo.h3" Color="Color.Primary">Gallaries</MudText>
+        <MudDivider/>
         <MudGrid>
             @foreach (var gallery in _gallaries)
             {
@@ -30,6 +41,10 @@
 
     private Dictionary<string, string> _gallaries = new()
     {
+        ["Birds"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
+        ["Insects"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
+        ["Landshut"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
+        ["Nature"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
         ["Eurofurence 25"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
         ["Furvester 5"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
         ["Eurofurence 26"] = "https://www.flickr.com/photos/marcelowo/albums/72157719901300092",
