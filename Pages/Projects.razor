@@ -3,10 +3,22 @@
 @inject IJSRuntime JsRuntime
 
 <MudGrid flex-wrap Class=" d-flex">
-    @foreach (var project in _projects)
+    <MudItem flex-wrap Class="d-flex" xs="12">
+        <MudPaper Class="pa-10 ma-5 d-flex" Elevation="23" flex-wrap-reverse gap-4>
+            <MudStack AlignItems="AlignItems.Start">
+                <MudText Typo="Typo.h3" Color="Color.Primary">Disclaimer</MudText>
+                <MudText Typo="Typo.body2">
+                    Just a small disclaimer that this part of the website is still work in progress and I usually update this very sparely. Probably will add a overlay with a proper explanation for each project in the future.
+                    I also only list project that I have worked on in my free time. Projects that I would have done because of university are not listed here, as most are mostly for learning and have no outside use,
+                    for example is a hangman game made in mips assembly, a compile for a simple language in java, various c,c++ and java projects for learning the language, some smaller unity projects and implementing some network protocols in c being the most notable ones.
+                </MudText>
+            </MudStack>
+        </MudPaper>
+    </MudItem>
+    @foreach (var project in _projects.Reverse())
     {
-        <MudItem xs="6">
-            <MudPaper id=@project.Key Class="pa-10 ma-5 d-flex" Elevation="23" flex-wrap-reverse gap-4 Style="overflow: hidden">
+        <MudItem flex-wrap Class="d-flex" xs="6">
+            <MudPaper id=@project.Key Class="pa-10 ma-5 d-flex" Elevation="23" flex-wrap-reverse gap-4>
                 <MudStack AlignItems="AlignItems.Center">
                     <MudText Typo="Typo.h3" Color="Color.Primary">@project.Key</MudText>
                     <MudText Typo="Typo.body2">
@@ -31,32 +43,32 @@
                          The main feature that I implemented were control flow and the control logic. The displayed images and games were sourced from the web.
                          ",
         ["Websites"] = @"
-                                           I am currently hosting 3 websites that are built with the same tech stack, namely .net blazor.
-                                           Also also use the mudblazor library for the frontend.
-                                           The applications were originally hosted on my private proxmox server but out of laziness I moved them to azure, also I was getting some weird network problems since I do not have enough bandwidth.
-                                           The websites are my homepage, a page to advertise my avatar comissions and another website that is supposed be a planned for my friend group that would allow them to make it easier to go to conventions.
-                                           Though the last one is still in development.
+                        I am currently hosting 3 websites that are built with the same tech stack, namely .net blazor.
+                        Also also use the mudblazor library for the frontend.
+                        The applications were originally hosted on my private proxmox server but out of laziness I moved them to azure, also I was getting some weird network problems since I do not have enough bandwidth.
+                        The websites are my homepage, a page to advertise my avatar comissions and another website that is supposed be a planned for my friend group that would allow them to make it easier to go to conventions.
+                        Though the last one is still in development.
                                ",
         ["ProxmoxServer"] = @"
-                                             I was inspired by a friend who was hosting a complete proxmox server at home to also host something similar.
-                                             So I reused on of my older laptops that I got from my old workplace to use it as a proxmox server.
-                                             The server was mainly used to host a couple small services and to play around with networking.
-                                             I had a container running that was hosting nginx so that I could host some websites.
-                                             I had a container for my homepage, for pi-hole, next-cloud and a couple other services.
-                                             The server is currently not in use as I moved some of my services to azure and am also not in need of the other ones.
+                            I was inspired by a friend who was hosting a complete proxmox server at home to also host something similar.
+                             So I reused on of my older laptops that I got from my old workplace to use it as a proxmox server.
+                             The server was mainly used to host a couple small services and to play around with networking.
+                             I had a container running that was hosting nginx so that I could host some websites.
+                             I had a container for my homepage, for pi-hole, next-cloud and a couple other services.
+                             The server is currently not in use as I moved some of my services to azure and am also not in need of the other ones.
                              ",
         ["Wordle"] = @"
-                                     I small project that I built with .net and WPF. 
-                                     It is just a small desktop application that runs the game wordle locally.
+                     I small project that I built with .net and WPF. 
+                     It is just a small desktop application that runs the game wordle locally.
                      ",
         ["Zipper"] = @"
-                                                           A small .net desktop application built on maui with blazor.
-                                     The application was built to pretty much annoy my non so tech savvy friends.
-                                     The app allows me to select a file on my desktop and then enter a number, which would correspond to the number of times the file would be zipped.
-                                     It would then allow me to save the file where I want.
+                     A small .net desktop application built on maui with blazor.
+                     The application was built to pretty much annoy my non so tech savvy friends.
+                     The app allows me to select a file on my desktop and then enter a number, which would correspond to the number of times the file would be zipped.
+                     It would then allow me to save the file where I want.
                      ",
         ["TeslaCoil"] = @"
-                                                                   A small  project  that was based on a kit one could buy from a company called oneTesla.
+                             A small  project  that was based on a kit one could buy from a company called oneTesla.
                              It is a kit for building a small musical tesla coil.
                              Annoying while ordering it was cought by customs and I needed to pay a fee to get it.
                              At least it was categorized as a instrument so I had to pay less.
@@ -70,43 +82,72 @@
                           And in the UI you could then select which one of those song you want to play.
                           ",
         ["Arch"] = @"
-To learn more about linux and using it for development and university I wanted to try out arch linux.
-I have already tried other distros like unbuntu, debain and rasbian, but I wanted to try arch since it seemed rather popular.
-Anyway I have setup a dual boot environment on my laptop with windows 11 and arch linux.
-I am currently using kde as the desktop environment and before that I was using hyprland.
-
-",
+                    To learn more about linux and using it for development and university I wanted to try out arch linux.
+                    I have already tried other distros like unbuntu, debain and rasbian, but I wanted to try arch since it seemed rather popular.
+                    Anyway I have setup a dual boot environment on my laptop with windows 11 and arch linux.
+                    I am currently using kde as the desktop environment and before that I was using hyprland.
+                    ",
         ["ChatGBTDesktopApp"] = @"
-A small console application that uses the openai api to chat with the gbt-3 turbo model at the time.
-The app also supported some commands to clear the context and to switch models.
-",
+                                A small console application that uses the openai api to chat with the gbt-3 turbo model at the time.
+                                The app also supported some commands to clear the context and to switch models.
+                                ",
         ["GameEngine"] = @"
-A small project on the side, where I was following a tutorial to build a small game engine using c++.
-I haven't gotten too far into the project so currently it is just a application that calls the basic windows api to create a new window.
-And in this window you can control each pixel manually.
-",
+                            A small project on the side, where I was following a tutorial to build a small game engine using c++.
+                            I haven't gotten too far into the project so currently it is just a application that calls the basic windows api to create a new window.
+                            And in this window you can control each pixel manually.
+                            ",
         ["UnityMobileApp"] = @"
-A small unity mobile app that I built for my android phone. 
-The app renders a small environment with a 3d model in the center.
-You could swipe the screen to change the camera angle.
-",
+                                A small unity mobile app that I built for my android phone. 
+                                The app renders a small environment with a 3d model in the center.
+                                You could swipe the screen to change the camera angle.
+                                ",
         ["MassDownloader"] = @"
-A small console app that is used to download pictures in mass from a picture board.
-The app would download the database file with all the links and tags stored and you could select filter for the images you want downloaded.
+                                A small console app that is used to download pictures in mass from a picture board.
+                                The app would download the database file with all the links and tags stored and you could select filter for the images you want downloaded.
+                                ",
+        ["Unity Game"] =    @"
+                            I joined a game jam in 2024 to see what I could create in about 4 days of development.
+                            So I joined the GMTK game jam. The theme was 'built to scale'.
+                            Anyway I decided to make a horror game, since I find those the most interesting. 
+                            I created the game using unity hdrp and blender for the models.
+                            The game was about a person that was trapped in a basement and the goal was to escape.
+                            I haven't really finished the game and therefor didn't submit.
+                            It was still a fun experience, enough though I made my life harder with the choice of game.
+                            The game was also using analog horror as the main theme. 
+                            The final version allowed you to wander around the small basement and you where able to interact and  pickup some items. Like a flashlight, a key and a computer.
+                            The latter was used a guide in the game.   
+                            ",
+        ["Voxel Engine"] =  @"
+                            Just a small project in unity to play around with the low level mesh api that unity provides. 
+                            The project was rather simple, I had a simple methode that created the mesh data for each voxel.
+                            The Data would then be sent to be split into chunks which would then be sent to a function to create the mesh for each chunk.
+                            It would also reuse the textures from minecraft to texture the voxels.
 
-",
-        ["Unity Game"] = @"
-I joined a game jam in 2024 to see what I could create in about 4 days of development.
-So I joined the GMTK game jam. The theme was 'built to scale'.
-Anyway I decided to make a horror game, since I find those the most interesting. 
-I created the game using unity hdrp and blender for the models.
-The game was about a person that was trapped in a basement and the goal was to escape.
-I haven't really finished the game and therefor didn't submit.
-It was still a fun experience, enough though I made my life harder with the choice of game.
-The game was also using analog horror as the main theme. 
-The final version allowed you to wander around the small basement and you where able to interact and  pickup some items. Like a flashlight, a key and a computer.
-THe latter was used a guide in the game.   
-",
+                            I might update the project in the future to improve the runtime performance by disabling rendering faces that are facing the other way, 
+                            add greedy meshing to the generating methods, some procedural generation and other things if I am bored enough. 
+                            ",
+        ["Restful API"] =   @"
+                            A simple project to learn how to build restful api's with .net. The project is till in early development. The project is using .net 8 minimal api and entity framework core.
+                            It should in the future be used as the backend for a app for loading product data with prices.
+                            ",
+        ["Scrapper with simple AI"] =   @"
+                                        This is another small project that is still in very early development; with some of the scrapping logic already implemented.
+                                        The project is using .net 8 and frameworks like selenium to scrap images and tags from the website.
+                                        In the future it should transform the data that is scraped and prepare it to be used to train an ai model, which might be deployed on a raspberry pi.
+                                        ",
+        ["Windows service for audio control"] = @"
+                                                This project was created to deal with a very werid issue that i somtimes encouter on windows and for learning more about how .net handles loading c++ libraries.
+                                                The issues is that windows when encountering with new sound devices, would sometimes change the default audio device to the new one.
+                                                This service would run in the background and use the windows api to check if the default audio device has changed and if it has it would change it back.
+                                                Currently still in development.
+                                                ",
+        ["Unity Shaders"] = @"
+                            Not a single project in it self, just a mention that i have been working on various shader in unity to learn more about how they work.
+                            The shaders are made for the unity birp, to be compatible with the game vrchat. 
+                            I usually either use amplify shader editor or use unity's shader lab and hsls to write some simple shaders.
+                            For example some simple spiral shaders, fire shaders, basic toon shaders and some other simple shaders.
+                            Also sometimes just converting shaders form shadertoy to unity.
+                            ",
     };
 
     private DotNetObjectReference<Projects>? _dotNetHelper;

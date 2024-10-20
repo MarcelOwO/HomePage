@@ -3,7 +3,7 @@
 
 @inject IJSRuntime JsRuntime
 
-<MudPaper id="paper1" Class="pa-15 ma-10 "  Elevation="23"  gap-4 Style="overflow: hidden">
+<MudPaper id="paper1" Class="pa-15 ma-10 " Elevation="23" gap-4 Style="overflow: hidden">
     <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
         <MudText Typo="Typo.h2" Color="Color.Primary">Education</MudText>
         <MudDivider/>
@@ -13,8 +13,10 @@
                     <MudText Color="Color.Primary" Typo="Typo.h5">September 2017 - July 2020</MudText>
                 </ItemOpposite>
                 <ItemContent>
-                    <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Appreticeship, Mechatronic</MudText>
-                    <MudText>Flottweg SE</MudText>
+                    <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Apprenticeship, Mechatronic</MudText>
+                    <MudButton Variant="Variant.Text" Href="https://www.flottweg.com/">
+                        Flottweg SE
+                    </MudButton>
                 </ItemContent>
             </MudTimelineItem>
 
@@ -25,9 +27,9 @@
 
                 <ItemContent>
                     <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Specialized University Entrance Qualification</MudText>
-                    <MudText>
+                    <MudButton Variant="Variant.Text" Href="https://www.fosbos-landshut.de/">
                         Staatliche Berufsoberschule 1 Landshut
-                    </MudText>
+                    </MudButton>
                 </ItemContent>
             </MudTimelineItem>
             <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
@@ -38,8 +40,10 @@
                 <ItemContent>
                     <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Bachelor, Computer Science</MudText>
                     <MudText>
-                        University of applied science Landshut
                     </MudText>
+                    <MudButton Variant="Variant.Text" Href="https://www.haw-landshut.de/">
+                        University of applied science Landshut
+                    </MudButton>
                 </ItemContent>
             </MudTimelineItem>
         </MudTimeline>
@@ -47,7 +51,7 @@
 </MudPaper>
 
 
-<MudPaper id="paper2" Class="pa-15 ma-10 "  Elevation="23"  gap-4 Style="overflow: hidden">
+<MudPaper id="paper2" Class="pa-15 ma-10 " Elevation="23" gap-4 Style="overflow: hidden">
     <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
         <MudText Typo="Typo.h2" Color="Color.Primary">Work Experience</MudText>
         <MudDivider/>
@@ -60,7 +64,7 @@
                     <MudText Align="Align.Right" Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Internship, Usaneers</MudText>
                 </ItemContent>
             </MudTimelineItem>
-            
+
             <MudTimelineItem TimelineAlign="TimelineAlign.End" Color="Color.Secondary" Size="Size.Small">
                 <ItemOpposite>
                     <MudText Color="Color.Primary" Typo="Typo.h5">April 2024 - July 2024</MudText>
@@ -72,6 +76,7 @@
         </MudTimeline>
     </MudStack>
 </MudPaper>
+
 @code
 {
     private DotNetObjectReference<Work_School> _dotNetHelper;
@@ -83,7 +88,7 @@
             _dotNetHelper = DotNetObjectReference.Create(this);
 
             await JsRuntime.InvokeVoidAsync("detectScroll", "paper1", _dotNetHelper);
-        await JsRuntime.InvokeVoidAsync("detectScroll", "paper2", _dotNetHelper);
+            await JsRuntime.InvokeVoidAsync("detectScroll", "paper2", _dotNetHelper);
         }
     }
 }

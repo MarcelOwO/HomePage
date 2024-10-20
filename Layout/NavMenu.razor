@@ -12,9 +12,7 @@
         <MudNavLink Icon="@Icons.Material.Filled.Camera" Href="/Photography">
             <MudText Align="Align.Center">Photography</MudText>
         </MudNavLink>
-        <MudNavLink Icon="@Icons.Material.Filled.PersonAdd" Href="/Avatars">
-            <MudText Align="Align.Center">Avatars</MudText>
-        </MudNavLink>
+      
     </MudNavMenu>
 </MudPaper>
 
@@ -30,7 +28,6 @@
 </MudPaper>
 
 @code {
-
     private readonly Dictionary<string, (string, string)> _contacts = new()
     {
         ["Twitter"] = ("https://x.com/Marcel_Sigl", @Icons.Custom.Brands.Twitter),
@@ -38,5 +35,4 @@
         ["Instagram"] = ("https://www.instagram.com/marcel_sigl/ ", @Icons.Custom.Brands.Instagram),
         ["Steam"] = ("https://steamcommunity.com/id/Marcelowo", @Icons.Custom.Brands.Steam),
     };
-
 }

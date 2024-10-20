@@ -4,6 +4,10 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <RunAOTCompilation>true</RunAOTCompilation>
+        <WasmStripILAfterAOT>true</WasmStripILAfterAOT>
+        <BlazorWebAssemblyLinkerTrimMode>Link</BlazorWebAssemblyLinkerTrimMode>
+        
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,6 +24,10 @@
 
     <ItemGroup>
       <Compile Include="wwwroot\Services\DictionaryMudLocalizer.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\Images\" />
     </ItemGroup>
 
 </Project>
