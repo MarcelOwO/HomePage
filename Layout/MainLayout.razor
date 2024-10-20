@@ -1,5 +1,4 @@
-﻿@using Variant = MudBlazor.Variant
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 
 <MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_myCustomTheme"/>
 
@@ -47,7 +46,6 @@
         if (firstRender)
         {
             _isDarkMode = await _mudThemeProvider?.GetSystemPreference()!;
-            //DarkModeService.ToggleDarkMode(_isDarkMode);
             StateHasChanged();
         }
     }

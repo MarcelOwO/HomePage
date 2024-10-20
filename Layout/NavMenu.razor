@@ -12,7 +12,7 @@
         <MudNavLink Icon="@Icons.Material.Filled.Camera" Href="/Photography">
             <MudText Align="Align.Center">Photography</MudText>
         </MudNavLink>
-      
+
     </MudNavMenu>
 </MudPaper>
 
@@ -27,7 +27,18 @@
     </MudStack>
 </MudPaper>
 
+<MudPaper Width="200" Class="pa-3 ma-3" Elevation="23">
+    <MudStack AlignItems="AlignItems.Center">
+        <MudStack Row="true">
+            <MudText>Contact</MudText>
+            <MudIcon Icon="@Icons.Material.Filled.Mail"></MudIcon>
+        </MudStack>
+        <MudText>marcel-sigl@gmx.de</MudText>
+    </MudStack>
+</MudPaper>
+
 @code {
+
     private readonly Dictionary<string, (string, string)> _contacts = new()
     {
         ["Twitter"] = ("https://x.com/Marcel_Sigl", @Icons.Custom.Brands.Twitter),
@@ -35,4 +46,5 @@
         ["Instagram"] = ("https://www.instagram.com/marcel_sigl/ ", @Icons.Custom.Brands.Instagram),
         ["Steam"] = ("https://steamcommunity.com/id/Marcelowo", @Icons.Custom.Brands.Steam),
     };
+
 }
