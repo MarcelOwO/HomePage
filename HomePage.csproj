@@ -4,7 +4,6 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <WasmStripILAfterAOT>true</WasmStripILAfterAOT>
         <BlazorWebAssemblyLinkerTrimMode>Link</BlazorWebAssemblyLinkerTrimMode>
         <BlazorWebAssemblyEnableCompression>true</BlazorWebAssemblyEnableCompression>
     </PropertyGroup>
