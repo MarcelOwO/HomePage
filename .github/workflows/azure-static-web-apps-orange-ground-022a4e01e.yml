@@ -19,6 +19,18 @@ jobs:
         with:
           submodules: true
           lfs: false
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.200' 
+
+      - name: Restore and Publish Blazor WASM
+        run: |
+          # If you have a .sln, specify it here, or just run in the solution folder
+          dotnet restore
+          dotnet publish -c Release -o build
+          
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
