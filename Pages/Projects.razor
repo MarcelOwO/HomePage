@@ -23,26 +23,31 @@
     @foreach (var project in _controller.Projects)
     {
         <MudItem xs="12" sm="6">
-            <MudButton Href="javascript:void(0)" Class="d-flex align-center justify-center mud-width-full py-8" OnClick="() => OpenOverlay(project.Key, project.Value)" >
-                <MudPaper id=@project.Key Class="d-flex align-center justify-center mud-width-full py-8"  Elevation="23" style="overflow:visible;white-space: normal;">
+            <MudPaper id=@project.Key Class="ma-5 pa-5 d-flex align-center justify-center " Elevation="23"
+                      style="overflow:visible;white-space: normal;">
+                <MudButton Href="javascript:void(0)" Class="d-flex align-center justify-center mud-width-full py-8"
+                           OnClick="() => OpenOverlay(project.Key, project.Value)">
                     <MudStack AlignItems="AlignItems.Center">
                         <MudText Typo="Typo.h4" Color="Color.Primary">@project.Key</MudText>
                     </MudStack>
-                </MudPaper>
-            </MudButton>
+                </MudButton>
+            </MudPaper>
         </MudItem>
     }
 </MudGrid>
 
 <MudOverlay @bind-Visible="_visible" DarkBackground AutoClose="true" OnClosed="OnOverlayClosed">
-    <MudPaper Class="pa-10 ma-5 d-flex " Elevation="23" flex-wrap-reverse gap-4 >
-        <MudStack AlignItems="AlignItems.Start">
-            <MudText Typo="Typo.h3" Color="Color.Primary">@_selectedProjectName</MudText>
-            <MudText Typo="Typo.body2">
-                @_selectedProjectDescription
-            </MudText>
-        </MudStack>
-    </MudPaper>
+    <MudContainer MaxWidth="MaxWidth.Small">
+        <MudPaper Class="pa-10 ma-5 d-flex " Elevation="23" flex-wrap-reverse gap-4>
+            <MudStack AlignItems="AlignItems.Start">
+                <MudText Typo="Typo.h3" Color="Color.Primary">@_selectedProjectName</MudText>
+                <MudDivider/>
+                <MudText Typo="Typo.body1">
+                    @_selectedProjectDescription
+                </MudText>
+            </MudStack>
+        </MudPaper>
+    </MudContainer>
 </MudOverlay>
 
 
