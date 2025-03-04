@@ -1,6 +1,6 @@
 ﻿@page "/Projects"
 
-@inject IJSRuntime JsRuntime
+@inject ProjectController _controller
 
 <MudGrid flex-wrap Class=" d-flex">
     <MudItem flex-wrap Class="d-flex" xs="12">
@@ -15,11 +15,11 @@
             </MudStack>
         </MudPaper>
     </MudItem>
-    @foreach (var project in _projects.Reverse())
+    @foreach (var project in _controller.Projects)
     {
         <MudItem flex-wrap Class="d-flex" xs="6">
             <MudPaper id=@project.Key Class="pa-10 ma-5 d-flex" Elevation="23" flex-wrap-reverse gap-4>
-                <MudButton Href="@project">
+                <MudButton Href="">
                     <MudStack AlignItems="AlignItems.Center">
                         <MudText Typo="Typo.h3" Color="Color.Primary">@project.Key</MudText>
                         <MudText Typo="Typo.body2">
@@ -36,9 +36,8 @@
 
 @code
 {
-
     private bool _visible = false;
-
+    
     public void OpenOverlay()
     {
         _visible = true;
@@ -47,22 +46,7 @@
 
     public void OnOverlayClosed()
     {
-    }
-
-
-
-
-    private DotNetObjectReference<Projects>? _dotNetHelper;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            _dotNetHelper = DotNetObjectReference.Create(this);
-            foreach (var project in _projects)
-            {
-                await JsRuntime.InvokeVoidAsync("detectScroll", project.Key, _dotNetHelper);
-            }
-        }
+        _visible = false;
+        StateHasChanged();
     }
 }

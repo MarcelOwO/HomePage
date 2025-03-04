@@ -2,27 +2,7 @@
 
 public class ProjectController
 {
-    public List<ProjectData> Projects { get; set; }
-    public static ProjectController Singleton { get; set; }
-
-    public ProjectController()
-    {
-        if (Singleton == null)
-        {
-            Singleton = this;
-        }
-        else
-        {
-            throw new Exception("Cannot create more than one instance of a Singleton class.");
-        }
-        
-        
-
-
-
-    }
-
-    private Dictionary<string, string> _projects = new()
+    public Dictionary<string, string> Projects = new()
     {
         ["LEDMatrix"] = @"
                               A small group project during my apprenticeship.
