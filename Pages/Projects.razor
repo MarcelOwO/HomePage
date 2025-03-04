@@ -2,44 +2,60 @@
 
 @inject ProjectController _controller
 
-<MudGrid flex-wrap Class=" d-flex">
-    <MudItem flex-wrap Class="d-flex" xs="12">
-        <MudPaper Class="pa-10 ma-5 d-flex" Elevation="23" flex-wrap-reverse gap-4>
+<MudGrid Class="d-flex" Spacing="3" Justify="Justify.Center">
+    <MudItem xs="12">
+        <MudPaper Class="pa-10 ma-5 d-flex" Elevation="23">
             <MudStack AlignItems="AlignItems.Start">
                 <MudText Typo="Typo.h3" Color="Color.Primary">Disclaimer</MudText>
                 <MudText Typo="Typo.body2">
-                    Just a small disclaimer that this part of the website is still work in progress and I usually update this very sparely. Probably will add a overlay with a proper explanation for each project in the future.
-                    I also only list project that I have worked on in my free time. Projects that I would have done because of university are not listed here, as most are mostly for learning and have no outside use,
-                    for example is a hangman game made in mips assembly, a compile for a simple language in java, various c,c++ and java projects for learning the language, some smaller unity projects and implementing some network protocols in c being the most notable ones.
+                    Just a small disclaimer that this part of the website is still work in progress and I usually update
+                    this very sparely. Probably will add a overlay with a proper explanation for each project in the
+                    future.
+                    I also only list project that I have worked on in my free time. Projects that I would have done
+                    because of university are not listed here, as most are mostly for learning and have no outside use,
+                    for example is a hangman game made in mips assembly, a compile for a simple language in java,
+                    various c,c++ and java projects for learning the language, some smaller unity projects and
+                    implementing some network protocols in c being the most notable ones.
                 </MudText>
             </MudStack>
         </MudPaper>
     </MudItem>
     @foreach (var project in _controller.Projects)
     {
-        <MudItem flex-wrap Class="d-flex" xs="6">
-            <MudPaper id=@project.Key Class="pa-10 ma-5 d-flex" Elevation="23" flex-wrap-reverse gap-4>
-                <MudButton Href="">
+        <MudItem xs="12" sm="6">
+            <MudButton Href="javascript:void(0)" Class="d-flex align-center justify-center mud-width-full py-8" OnClick="() => OpenOverlay(project.Key, project.Value)" >
+                <MudPaper id=@project.Key Class="d-flex align-center justify-center mud-width-full py-8"  Elevation="23" style="overflow:visible;white-space: normal;">
                     <MudStack AlignItems="AlignItems.Center">
-                        <MudText Typo="Typo.h3" Color="Color.Primary">@project.Key</MudText>
-                        <MudText Typo="Typo.body2">
-                            @project.Value
-                        </MudText>
+                        <MudText Typo="Typo.h4" Color="Color.Primary">@project.Key</MudText>
                     </MudStack>
-                </MudButton>
-            </MudPaper>
+                </MudPaper>
+            </MudButton>
         </MudItem>
     }
 </MudGrid>
 
-<MudOverlay @bind-Visible="_visible" DarkBackground AutoClose="true" OnClosed="OnOverlayClosed"/>
+<MudOverlay @bind-Visible="_visible" DarkBackground AutoClose="true" OnClosed="OnOverlayClosed">
+    <MudPaper Class="pa-10 ma-5 d-flex " Elevation="23" flex-wrap-reverse gap-4 >
+        <MudStack AlignItems="AlignItems.Start">
+            <MudText Typo="Typo.h3" Color="Color.Primary">@_selectedProjectName</MudText>
+            <MudText Typo="Typo.body2">
+                @_selectedProjectDescription
+            </MudText>
+        </MudStack>
+    </MudPaper>
+</MudOverlay>
+
 
 @code
 {
+    private string? _selectedProjectName;
+    private string? _selectedProjectDescription;
     private bool _visible = false;
-    
-    public void OpenOverlay()
+
+    public void OpenOverlay(string name, string description)
     {
+        _selectedProjectName = name;
+        _selectedProjectDescription = description;
         _visible = true;
         StateHasChanged();
     }
@@ -47,6 +63,8 @@
     public void OnOverlayClosed()
     {
         _visible = false;
+        _selectedProjectDescription = null;
+        _selectedProjectName = null;
         StateHasChanged();
     }
 }

@@ -125,5 +125,21 @@ public class ProjectController
                                  For example I wrote some simple spiral shaders, fire shaders and basic toon shaders.
                                  Also sometimes just converting shaders form shadertoy to unity.
                                  ",
+        ["Backpack Controller"] = @"
+A small application that I built to get more exercise in C++.
+The app is a combination of 2 apps. One is a small android app that is built with .net maui.
+The app is used to control the other part of this project.
+The other and main part is a linux application that is renders a full screen window.
+The screen if installed on the back of a backpack instead of the usual led-matrix. 
+The app currently is still wip and uses libraries like SDL3 for the creation of the window.
+The connection is handled via bluetooth. 
+",
+
+        ["Badge Controller"] = @"
+A similar app to the Backpack Controller, but instead of a full linux running the app it running on a esp32.
+The currently implementation is simplified and only loads bmp images from a sd card and cycles through them.
+The app part is still not finished. I will probably use the same app as for the backback controller,
+though I might need to handle some more of the computing on the app instead of the esp32. 
+",
     };
 }
