@@ -5,27 +5,13 @@ public class ProjectController
     public Dictionary<string, string> Projects = new()
     {
         ["LEDMatrix"] = @"
-                              A small group project during my apprenticeship.
-                              The project goal was to build a working led matrix. I was mainly responsible for the code running the matrix and setting up the electronics that was controlling everything.
-                              The matrix itself was made out of a neo-pixel led strip that we cut up and glued on wooden board, that was made by another teammate.
-                              The matrix was controlled by an arduino mega, a bit overkill but we had on laying around.
-                              The code that was running the matrix was rather simple. As i wasn't too familiar with coding at the time. I sourced most code from the web.
-                              The main feature that I implemented were control flow and the control logic. The displayed images and games were sourced from the web.
+                         During my apprenticeship, I participated in a group project aimed at building a working LED matrix. I was responsible for developing the control code and setting up the electronics behind the display. The matrix was constructed using a NeoPixel LED strip that we cut and mounted on a wooden board crafted by a teammate, and it was controlled by an Arduino Mega—more than sufficient for our needs. At that time, my coding skills were still developing, so I sourced much of the initial code from the web, while I focused on implementing the control flow and logic. The images and games displayed on the matrix were also sourced online, rounding out a project that provided a hands-on experience with both hardware and software integration.
                               ",
         ["Websites"] = @"
-                             I am currently hosting 3 websites that are built with the same tech stack, namely .net blazor.
-                             Also also use the mudblazor library for the frontend.
-                             The applications were originally hosted on my private proxmox server but out of laziness I moved them to azure, also I was getting some weird network problems since I do not have enough bandwidth.
-                             The websites are my homepage, a page to advertise my avatar comissions and another website that is supposed be a planned for my friend group that would allow them to make it easier to go to conventions.
-                             Though the last one is still in development.
+                           I am currently hosting three websites built using a consistent tech stack—.NET Blazor combined with the MudBlazor library for the frontend. Initially, these applications were hosted on my private Proxmox server, but due to bandwidth limitations and some network issues, I migrated them to Azure for improved performance and ease of management. The websites include my personal homepage, a dedicated page for advertising my avatar commissions, and another site in development intended to help my friend group coordinate attending conventions.
                                     ",
         ["ProxmoxServer"] = @"
-                                 I was inspired by a friend who was hosting a complete proxmox server at home to also host something similar.
-                                  So I reused on of my older laptops that I got from my old workplace to use it as a proxmox server.
-                                  The server was mainly used to host a couple small services and to play around with networking.
-                                  I had a container running that was hosting nginx so that I could host some websites.
-                                  I had a container for my homepage, for pi-hole, next-cloud and a couple other services.
-                                  The server is currently not in use as I moved some of my services to azure and am also not in need of the other ones.
+                            Inspired by a friend who hosted a complete Proxmox server at home, I repurposed an older laptop from my previous workplace to create my own Proxmox server. This setup allowed me to experiment with networking while hosting several small services, including a container running Nginx for websites, as well as containers for my homepage, Pi-hole, Nextcloud, and a few other services. Although the server provided a versatile platform for these experiments, it is currently not in use since I've moved some services to Azure and no longer require the others.
                                   ",
         ["Wordle"] = @"
                           I small project that I built with .net and WPF. 
@@ -38,108 +24,50 @@ public class ProjectController
                           It would then allow me to save the file where I want.
                           ",
         ["TeslaCoil"] = @"
-                                  A small  project  that was based on a kit one could buy from a company called oneTesla.
-                                  It is a kit for building a small musical tesla coil.
-                                  Annoying while ordering it was cought by customs and I needed to pay a fee to get it.
-                                  At least it was categorized as a instrument so I had to pay less.
-                                  Anyway the kit was a simple solid state tesla coil with a external controller that would send light signal to the coil to play music.
-                                  Apart from having some issues on applying enough varnish to the coil and the disgusting smell of ozone while using it, it was a fun project.
+                           This project involved building a small musical Tesla coil using a kit from oneTesla. The kit features a solid-state Tesla coil paired with an external controller that sends light signals to produce music. Despite a hiccup during ordering—customs intercepted the package, and I had to pay a fee, albeit reduced by its classification as an instrument—I managed to complete the project. Although there were challenges, such as applying enough varnish to the coil and contending with the pungent smell of ozone during use, it turned out to be an enjoyable and rewarding endeavor.
                               ",
         ["DiscordBot"] = @" 
-                               A small discord bot that I built with d sharp plus.
-                               The bot would be controlled by a desktop client built with wpf, that would give you the ability to select mp3 files from your computer and load them.
-                               The bot would then join the voice channel that was programmed into.
-                               And in the UI you could then select which one of those song you want to play.
+                     This small Discord bot, built with D# (D Sharp Plus), is controlled by a desktop client developed using WPF. The client allows users to select and load MP3 files from their computer, and once the bot joins a predetermined voice channel, users can choose which songs to play through the interface.
                                ",
         ["Arch"] = @"
-                         To learn more about linux and using it for development and university I wanted to try out arch linux.
-                         I have already tried other distros like unbuntu, debain and rasbian, but I wanted to try arch since it seemed rather popular.
-                         Anyway I have setup a dual boot environment on my laptop with windows 11 and arch linux.
-                         I am currently using kde as the desktop environment and before that I was using hyprland.
+To learn more about Linux for development and university, I decided to try Arch Linux. I had already experimented with distributions like Ubuntu, Debian, and Raspbian, but Arch's popularity intrigued me. I set up a dual boot environment on my laptop with Windows 11 and Arch Linux, and I am currently using Hyprland as my desktop environment.
                          ",
         ["ChatGBTDesktopApp"] = @"
-                                     A small .net console application that can send some api calls to interact with the openai api to have a small chat window with some commands.
-                                     At the time this would allow me to interact with the chat-gbt-3-turbo model.
+                                  This project is a small .NET console application that sends API calls to the OpenAI API, creating a simple chat interface with command functionalities. Initially designed to interact with the ChatGPT-3-Turbo model, it enables users to engage in a streamlined conversation directly from the console. The application demonstrates the basics of integrating API communication in a .NET environment, making it a practical tool for exploring conversational AI.
                                      ",
         ["GameEngine"] = @"
-                                 A small project that I plan to revisit in the future.
-                                 Since I was curious about how game engines work and how they are built, so I decided to follow a tutorial to built one from scratch in c++.
-                                 Though I haven't gotten too far into the project and have so far only implemented a wrapper for the windows api to create a window.
-                                 This would so far only allow me to control pixels individually in the window.
-     
-                                 In the future I might plan to start this project over to actually learn the inner workings, though I will probably still use libraries like sdl2 and openGL/Vulkan.
+                           This small project, which I plan to revisit in the future, was sparked by my curiosity about the inner workings of game engines. I followed a tutorial to build one from scratch in C++, and so far, I've only managed to implement a basic wrapper for the Windows API that creates a window, allowing me to control pixels individually. In the future, I might restart the project with a more robust approach using libraries like SDL2 and OpenGL/Vulkan to gain a deeper understanding of game engine development.
                                  ",
         ["UnityMobileApp"] = @"
-                                     A small unity mobile app that I built for my android phone. 
-                                     The app renders a small environment with a 3d model in the center.
-                                     You could swipe the screen to rotate the camera around the model.
+                                   This small Unity mobile app, built for Android, features a compact 3D environment centered around a single 3D model. Users can interact by swiping the screen, which rotates the camera around the model, allowing them to view it from multiple angles.
                                      ",
         ["MassDownloader"] = @"
-                                     A small console app that is used to scrape pictures from a picture board by allowing the used to specify filters. 
-                                     The picture board had options to download a database export of all images and tags. The application would then use the data from the export.
+                                  This small console application is designed to scrape images from a picture board by allowing users to specify filters. It leverages the board’s feature to download a complete database export of all images and tags, using that data to efficiently extract and display pictures that match the user-defined criteria.
                                      ",
         ["Unity Game"] = @"
-                                 To learn more about game development and see how far I could get in a about 4 days of development I decided to join a gamejam.
-                                 The gamejam I joined was GTKM 2024 with the theme 'built to scale'.
-                                 For the gamejam I choose to make a horror game, since I find those the most interesting, even though that choice didn't make it any easier for me.
-                                 I created the game in unity with the HDRP render-pipeline and used Blender for the models.
-                                 The game was supposed to be about a person that was trapped in a basement and the goal was to escape.
-                                 I haven't really finished the game and therefore didn't submit it at the end.
-                                 It was still a fun experience, enough though I made my life harder with the choice of game.
-     
-                                 The game was also using analog horror as the main theme. 
-                                 The final version allowed you to wander around the small basement and you where able to interact and pickup some items.
-                                 Like a flashlight, a key and a computer.
-                                 The latter was used as a guide in the game.   
+                              In an effort to deepen my understanding of game development, I joined the GTKM 2024 gamejam with the theme ""Built to Scale"" and challenged myself to create a horror game within about four days. I built the game in Unity using the HDRP render pipeline and modeled assets in Blender, designing a narrative centered on a person trapped in a basement with the goal of escape. Although the project remains unfinished and was ultimately not submitted, it was a rewarding experience, even if the choice of a horror theme—particularly with an analog horror twist—added to the challenge. The final version allowed players to explore the confined basement environment, interact with items such as a flashlight, key, and computer, with the computer serving as an in-game guide.
                                  ",
         ["Voxel Engine"] = @"
-                                 Just a small project in unity to play around with the low level mesh api that unity provides. 
-                                 The project was rather simple, I had a simple methode that creates all the voxel data like position and type.
-                                 The data would then be sent to be split into chunks, which would then be sent to a function to create the mesh for each chunk.
-                                 It would also reuse the textures from minecraft to texture the voxels.
-                                 During the creation of th mesh I also skipped faces that would be inside the mesh of the chunk. The creation also uses unity's job system with burst compile to improve performance.
-     
-                                 I might update the project in the future to improve the runtime performance by disabling rendering faces that are facing the other way, 
-                                 add greedy meshing to the generating methods, some procedural generation and other things if I am bored enough. 
+                           This small Unity project was developed to explore Unity's low-level mesh API. It generates voxel data—including positions and types—and then splits this data into chunks, each of which is processed to create a mesh. Minecraft textures are reused to add detail to the voxels, and the mesh creation process is optimized by skipping faces that are internal to the chunk. Additionally, the project leverages Unity’s Job System with Burst compilation to boost performance. Future enhancements may include disabling rendering for backfaces, implementing greedy meshing, adding procedural generation, and other performance improvements.
                                  ",
         ["Restful API"] = @"
-                                 A simple project to learn how to build restful api's with asp.net. The project is still in early development.
-                                 The project is using .net minimal api and entity framework core.
-                                 It should in the future be used as the backend for a app for loading product data with prices.
+                 This project is a simple exploration into building RESTful APIs using ASP.NET, currently in early development. It leverages .NET Minimal API and Entity Framework Core to establish a foundational backend, with the future goal of serving an application that loads product data along with pricing information.
                                  ",
         ["Scrapper with simple AI"] = @"
-                                             This is another small project that is still in very early development; with some of the scrapping logic already implemented.
-                                             The project is using .net and  selenium to scrape images and tags from a website.
-                                             In the future it should prepare the data that is scraped and use it to train an ai model, which then might be deployed on a raspberry pi.
+               This small project is still in its early stages, with some of the scraping logic already implemented. It uses .NET and Selenium to extract images and tags from a website, and the long-term plan is to prepare the scraped data for training an AI model, which may eventually be deployed on a Raspberry Pi.
                                              ",
         ["Windows service for audio control"] = @"
-                                                     This project was created to deal with a very weird issue that I sometimes encounter on windows and for learning more about how .net handles loading c++ libraries.
-                                                     The issues that I encountered that caused me to create this project, is that windows when encountering with new sound devices, would sometimes change the default audio device to the new one.
-                                                     This service should run in the background and use the windows api to check if the default audio device has changed and if it has it would change it back.
-                                                     Currently still in development. I am currently able to load the functions of c++ libraries into the .net code and call them. Though changing audio devices is still something I am working on.
+                                This project was created to address a peculiar issue on Windows, where new sound devices can inadvertently become the default audio device, and to explore how .NET handles loading C++ libraries. The goal is to develop a background service that uses the Windows API to monitor for changes in the default audio device and revert them if needed. Although the project is still in development, progress has been made in integrating C++ library functions within the .NET code, with the audio device switching functionality remaining a work in progress.
                                                      ",
         ["Unity Shaders"] = @"
-                                 Not a project in it self, just a compilation of side projects to understand the workings of unity shaders.
-                                 The shaders are made for the unity birp, to be compatible with the game vrchat. 
-                                 I usually either use amplify shader editor or use unity's shader lab and hlsl to write the shaders.
-                                 For example I wrote some simple spiral shaders, fire shaders and basic toon shaders.
-                                 Also sometimes just converting shaders form shadertoy to unity.
+                         This compilation isn't a project in itself but a series of side projects aimed at exploring and understanding the intricacies of Unity shaders. The shaders, developed for the Unity Built-In Render Pipeline to ensure compatibility with VRChat, are created using either the Amplify Shader Editor or by writing directly in Unity's Shader Lab and HLSL. The collection includes various examples such as simple spiral shaders, fire shaders, and basic toon shaders, along with conversions of ShaderToy shaders into Unity.
                                  ",
         ["Backpack Controller"] = @"
-A small application that I built to get more exercise in C++.
-The app is a combination of 2 apps. One is a small android app that is built with .net maui.
-The app is used to control the other part of this project.
-The other and main part is a linux application that is renders a full screen window.
-The screen if installed on the back of a backpack instead of the usual led-matrix. 
-The app currently is still wip and uses libraries like SDL3 for the creation of the window.
-The connection is handled via bluetooth. 
+The Backpack Controller is a project developed to get more exercise in C++ and is composed of two interconnected applications. One part is a small Android app built with .NET MAUI, which serves as the controller for the system. The other, more substantial component is a Linux application that renders a full-screen window, replacing the traditional LED matrix with a display mounted on the back of a backpack. Currently a work in progress, the Linux app utilizes libraries like SDL3 for window creation, and the entire system communicates via Bluetooth.
 ",
 
         ["Badge Controller"] = @"
-A similar app to the Backpack Controller, but instead of a full linux running the app it running on a esp32.
-The currently implementation is simplified and only loads bmp images from a sd card and cycles through them.
-The app part is still not finished. I will probably use the same app as for the backback controller,
-though I might need to handle some more of the computing on the app instead of the esp32. 
+The Badge Controller is a project designed to operate similarly to the Backpack Controller but on an ESP32 platform instead of a full Linux system. Its current implementation focuses on loading BMP images from an SD card and cycling through them, providing a simplified yet effective display solution. Although the app component is still under development, future plans include possibly reusing the existing app from the Backpack Controller while potentially offloading more computing tasks to the app itself, thus optimizing the performance of the ESP32.
 ",
     };
 }
