@@ -6,11 +6,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <BlazorWebAssemblyLinkerTrimMode>Link</BlazorWebAssemblyLinkerTrimMode>
         <BlazorWebAssemblyEnableCompression>true</BlazorWebAssemblyEnableCompression>
-        <TrimMode>full</TrimMode>
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="Blazor3D" Version="0.1.42"/>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0"/>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0" PrivateAssets="all"/>
         <PackageReference Include="MudBlazor" Version="7.1.1"/>
