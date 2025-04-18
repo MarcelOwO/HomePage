@@ -1,68 +1,130 @@
 ﻿@page "/Projects"
+@using HomePage.Data
+@using HomePage.Enums
+@using HomePage.Models
 
-@inject ProjectController _controller
+@inject ProjectController Controller
+@inject IJSRuntime JSRuntime
 
-<MudGrid Class="d-flex" Spacing="3" Justify="Justify.Center">
-    <MudItem xs="12">
-        <MudPaper Class="pa-10 ma-5 d-flex" Elevation="23">
-            <MudStack AlignItems="AlignItems.Start">
-                <MudText Typo="Typo.h3" Color="Color.Primary">Disclaimer</MudText>
-                <MudText Typo="Typo.body2">
-                    This part is wip. Only includes projects done in my free time.
-                </MudText>
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <MudPaper Class="pa-8 mb-6" Elevation="23">
+        <MudStack>
+            <MudText Typo="Typo.h2" Color="Color.Primary" Class="mb-2 project-title">My Projects</MudText>
+            <MudDivider Class="mb-4" Style="max-width: 100px"/>
+            <MudText Typo="Typo.body1" Class="mb-4">
+                Below you'll find a collection of projects I've worked on in my spare time. Each project represents a
+                different challenge and learning opportunity.
+            </MudText>
+
+            <MudStack>
+                <MudText Typo="Typo.subtitle1" Class="mb-2">Filter by technology:</MudText>
+                <MudPaper Class="pa-3 mb-3" Elevation="0">
+                    <MudSelect T="string" MultiSelection="true" @bind-Value="_value"
+                               @bind-selectedvalues="_selectedCategory">
+                        @foreach (var category in Enum.GetValues(typeof(TechnologiesEnum)).Cast<TechnologiesEnum>())
+                        {
+                            <MudSelectItem T="string" Value="@category.ToString()"
+                                           Color="Color.Primary">@category.ToString()</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudPaper>
+
+                <MudTextField @bind-Value="searchText" Label="Search projects"
+                              Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search"
+                              Margin="Margin.Dense"/>
             </MudStack>
-        </MudPaper>
-    </MudItem>
-    @foreach (var project in _controller.Projects)
+
+        </MudStack>
+    </MudPaper>
+
+    <MudGrid Spacing="4">
+        @foreach (ProjectData project in GetFilteredProjects())
+        {
+            <MudItem xs="12" sm="6" md="4">
+                <MudCard Elevation="23" Class="project-card"
+                         @onclick="() => OpenOverlay(project)">
+                    <MudCardMedia Image="@project.ImageUrl" Height="200"/>
+                    <MudCardContent>
+                        <MudText Typo="Typo.h5" Color="Color.Primary">@project.Name</MudText>
+                        @if (project.Description != null)
+                        {
+                            <MudText Typo="Typo.body2" Class="mt-2 mud-text-secondary project-preview">
+                                @(project.Description.Length > 150 ? project.Description.Substring(0, 150) + "..." : project.Description)
+                            </MudText>
+                        }
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton Variant="Variant.Text" Color="Color.Primary"
+                                   EndIcon="@Icons.Material.Filled.ReadMore">
+                            View Details
+                        </MudButton>
+                        @if (project.Link != null)
+                        {
+                            <MudSpacer/>
+                            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Default"
+                                           Link="@project.Link" Target="_blank"/>
+                        }
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+        }
+    </MudGrid>
+</MudContainer>
+
+<MudOverlay @bind-Visible="_visible" DarkBackground="true" AutoClose="true" OnClosed="OnOverlayClosed">
+    @if (_selectedProject?.Type != null)
     {
-        <MudItem xs="12" sm="6">
-            <MudPaper id=@project.Key Class="ma-5 pa-5 d-flex align-center justify-center " Elevation="23"
-                      style="overflow:visible;white-space: normal;">
-                <MudButton Href="javascript:void(0)" Class="d-flex align-center justify-center mud-width-full py-8"
-                           OnClick="() => OpenOverlay(project.Key, project.Value)">
-                    <MudStack AlignItems="AlignItems.Center">
-                        <MudText Typo="Typo.h4" Color="Color.Primary">@project.Key</MudText>
-                    </MudStack>
-                </MudButton>
-            </MudPaper>
-        </MudItem>
-    }
-</MudGrid>
-
-<MudOverlay @bind-Visible="_visible" DarkBackground AutoClose="true" OnClosed="OnOverlayClosed">
-    <MudContainer MaxWidth="MaxWidth.Small">
-        <MudPaper Class="pa-10 ma-5 d-flex " Elevation="23" flex-wrap-reverse gap-4>
-            <MudStack AlignItems="AlignItems.Start">
-                <MudText Typo="Typo.h3" Color="Color.Primary">@_selectedProjectName</MudText>
-                <MudDivider/>
-                <MudText Typo="Typo.body1">
-                    @_selectedProjectDescription
-                </MudText>
-            </MudStack>
+        <MudPaper Class="ma-10 pa-10">
+            <DynamicComponent Type="_selectedProject.Type"/>
         </MudPaper>
-    </MudContainer>
+    }
 </MudOverlay>
 
+@code {
 
-@code
-{
-    private string? _selectedProjectName;
-    private string? _selectedProjectDescription;
+    private ProjectData? _selectedProject;
     private bool _visible = false;
+    private string searchText = "";
+    private string? _value = "Nothing selected";
 
-    public void OpenOverlay(string name, string description)
+    private IEnumerable<string> _selectedCategory = new HashSet<string>();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        _selectedProjectName = name;
-        _selectedProjectDescription = description;
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("animateProjects");
+        }
+    }
+
+    private void OpenOverlay(ProjectData project)
+    {
+        _selectedProject = project;
         _visible = true;
         StateHasChanged();
     }
 
-    public void OnOverlayClosed()
+    private void OnOverlayClosed()
     {
         _visible = false;
-        _selectedProjectDescription = null;
-        _selectedProjectName = null;
+        _selectedProject = null;
         StateHasChanged();
     }
+
+    private IEnumerable<ProjectData> GetFilteredProjects()
+    {
+        var projects = Controller.Projects;
+
+        var filterByTechnology = _selectedCategory.Any() &&
+                                 _selectedCategory.Count() != Enum.GetValues<TechnologiesEnum>().Length;
+
+        return projects.Where(project =>
+            (!filterByTechnology || project.Technologies.Any(x => _selectedCategory.Select(Enum.Parse<TechnologiesEnum>).Contains(x))) &&
+            (string.IsNullOrEmpty(searchText) ||
+             project.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+             (project.Description != null && project.Description.Contains(searchText, StringComparison.OrdinalIgnoreCase)))
+        );
+    }
+
 }

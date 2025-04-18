@@ -1,93 +1,63 @@
 ﻿@page "/WorkExperience"
+@using HomePage.Components
 
-@inject IJSRuntime JsRuntime
+<MudPaper Class="section-paper mb-6" Elevation="3">
+    <MudText Align="Align.Center" Typo="Typo.h2" Color="Color.Primary" Class="text-center mb-2">Education</MudText>
+    <MudDivider Class="mx-auto mb-6" Style="max-width: 150px"/>
 
-<MudPaper id="paper1" Class="pa-15 ma-10 " Elevation="23" gap-4 Style="overflow: hidden">
-    <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
-        <MudText Typo="Typo.h2" Color="Color.Primary">Education</MudText>
-        <MudDivider/>
-        <MudTimeline>
-            <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
-                <ItemOpposite>
-                    <MudText Color="Color.Primary" Typo="Typo.h5">September 2017 - July 2020</MudText>
-                </ItemOpposite>
-                <ItemContent>
-                    <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Apprenticeship, Mechatronic</MudText>
-                    <MudButton Variant="Variant.Text" Href="https://www.flottweg.com/">
-                        Flottweg SE
-                    </MudButton>
-                </ItemContent>
-            </MudTimelineItem>
+    <MudTimeline TimelinePosition="TimelinePosition.Left"
+                 TimelineAlign="TimelineAlign.Default"
+                 Class="pa-4">
 
-            <MudTimelineItem TimelineAlign="TimelineAlign.End" Color="Color.Secondary" Size="Size.Small">
-                <ItemOpposite >
-                    <MudText Align="Align.Right" Color="Color.Primary" Typo="Typo.h5">September 2020 - July 2021</MudText>
-                </ItemOpposite>
+        <TimelineItem
+            Period="Sep 2017 - Jul 2020"
+            Title="Apprenticeship, Mechatronic"
+            Icon="@Icons.Material.Filled.School"
+            Organization="Flottweg SE"
+            OrganizationUrl="https://www.flottweg.com/"
+            Description="Gained practical skills in mechanical and electronic systems integration."/>
 
-                <ItemContent>
-                    <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Specialized University Entrance Qualification</MudText>
-                    <MudButton Variant="Variant.Text" Href="https://www.fosbos-landshut.de/">
-                        Staatliche Berufsoberschule 1 Landshut
-                    </MudButton>
-                </ItemContent>
-            </MudTimelineItem>
-            <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
-                <ItemOpposite>
-                    <MudText Color="Color.Primary" Typo="Typo.h5">Oktober 2021 - Now</MudText>
-                </ItemOpposite>
+        <TimelineItem
+            Period="Sep 2020 - Jul 2021"
+            Title="Specialized University Entrance Qualification"
+            Icon="@Icons.Material.Filled.MenuBook"
+            Organization="Staatliche Berufsoberschule 1 Landshut"
+            OrganizationUrl="https://www.fosbos-landshut.de/"
+            Description="Technical education with focus on engineering principles."/>
 
-                <ItemContent>
-                    <MudText Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Bachelor, Computer Science</MudText>
-                    <MudText>
-                    </MudText>
-                    <MudButton Variant="Variant.Text" Href="https://www.haw-landshut.de/">
-                        University of applied science Landshut
-                    </MudButton>
-                </ItemContent>
-            </MudTimelineItem>
-        </MudTimeline>
-    </MudStack>
+        <TimelineItem
+            Period="Oct 2021 - Present"
+            Title="Bachelor, Computer Science"
+            Icon="@Icons.Material.Filled.Computer"
+            Organization="University of Applied Science Landshut"
+            OrganizationUrl="https://www.haw-landshut.de/"
+            Description="Studying algorithms, software development, and systems architecture."/>
+    </MudTimeline>
 </MudPaper>
 
+<MudPaper Class="section-paper" Elevation="3">
+    <MudText Align="Align.Center" Typo="Typo.h2" Color="Color.Primary" Class="text-center mb-2">Work Experience
+    </MudText>
+    <MudDivider Class="mx-auto mb-6" Style="max-width: 150px"/>
 
-<MudPaper id="paper2" Class="pa-15 ma-10 " Elevation="23" gap-4 Style="overflow: hidden">
-    <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
-        <MudText Typo="Typo.h2" Color="Color.Primary">Work Experience</MudText>
-        <MudDivider/>
-        <MudTimeline>
-            <MudTimelineItem Color="Color.Secondary" Size="Size.Small">
-                <ItemOpposite>
-                    <MudText Color="Color.Primary" Typo="Typo.h5">November 2023 - March 2024</MudText>
-                </ItemOpposite>
-                <ItemContent>
-                    <MudText Align="Align.Right" Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Internship, Usaneers</MudText>
-                </ItemContent>
-            </MudTimelineItem>
+    <MudTimeline TimelinePosition="TimelinePosition.Left"
+                 TimelineAlign="TimelineAlign.Default"
+                 Class=" pa-4">
 
-            <MudTimelineItem TimelineAlign="TimelineAlign.End" Color="Color.Secondary" Size="Size.Small">
-                <ItemOpposite>
-                    <MudText Color="Color.Primary" Typo="Typo.h5">April 2024 - July 2024</MudText>
-                </ItemOpposite>
-                <ItemContent>
-                    <MudText Align="Align.Right" Color="Color.Secondary" Typo="Typo.h6" GutterBottom="true">Working Student, Usaneers</MudText>
-                </ItemContent>
-            </MudTimelineItem>
-        </MudTimeline>
-    </MudStack>
+        <TimelineItem
+            Period="Nov 2023 - Mar 2024"
+            Title="Internship"
+            Icon="@Icons.Material.Filled.Work"
+            Organization="Usaneers GmbH"
+            OrganizationUrl="https://usaneers.de/"
+            Description="Gained practical experience in UX design and development processes."/>
+
+        <TimelineItem
+            Period="Apr 2024 - Present"
+            Title="Working Student"
+            Icon="@Icons.Material.Filled.Engineering"
+            Organization="Usaneers GmbH"
+            OrganizationUrl="https://usaneers.de/"
+            Description="Applied software development skills in a professional environment while balancing academic work."/>
+    </MudTimeline>
 </MudPaper>
-
-@code
-{
-    private DotNetObjectReference<Work_School> _dotNetHelper;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            _dotNetHelper = DotNetObjectReference.Create(this);
-
-            await JsRuntime.InvokeVoidAsync("detectScroll", "paper1", _dotNetHelper);
-            await JsRuntime.InvokeVoidAsync("detectScroll", "paper2", _dotNetHelper);
-        }
-    }
-}

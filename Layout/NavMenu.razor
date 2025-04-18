@@ -1,47 +1,71 @@
-﻿<MudPaper Width="200" Class="pa-3 ma-3" Elevation="23">
-    <MudNavMenu>
-        <MudNavLink Icon="@Icons.Material.Filled.Home" Href="/">
-            <MudText Align="Align.Center">Home</MudText>
-        </MudNavLink>
-        <MudNavLink Icon="@Icons.Material.Filled.Person" Href="/WorkExperience">
-            <MudText Align="Align.Center">Work Experience</MudText>
-        </MudNavLink>
-        <MudNavLink Icon="@Icons.Material.Filled.Code" Href="/Projects">
-            <MudText Align="Align.Center">Projects</MudText>
-        </MudNavLink>
-        <MudNavLink Icon="@Icons.Material.Filled.Camera" Href="/Photography">
-            <MudText Align="Align.Center">Photography</MudText>
-        </MudNavLink>
-
+﻿@using HomePage.Data
+<MudPaper Width="250" Class="pa-3 ma-3" Elevation="23">
+    <MudNavMenu Color="Color.Primary" Rounded="true" Dense="true">
+        @foreach (var pageData in _pages)
+        {
+            <MudNavLink Icon="@pageData.Icon" Href="@pageData.Link">
+                @pageData.Name
+            </MudNavLink>
+        }
     </MudNavMenu>
 </MudPaper>
 
-<MudPaper Width="200" Class="pa-3 ma-3" Elevation="23">
-    <MudStack>
+<MudPaper Width="250" Class="pa-3 ma-3" Elevation="23">
+    <MudText Typo="Typo.subtitle1">Connect</MudText>
+    <MudDivider Class="mb-2"/>
+    <MudList T="string" Dense="true" Padding="false">
         @foreach (var contact in _contacts)
         {
-            <MudButton Href=@contact.Value.Item1 StartIcon=@contact.Value.Item2>
-                <MudText>@contact.Key</MudText>
-            </MudButton>
+            <MudListItem Target="_blank" Href=@contact.Value.Item1 Icon=@contact.Value.Item2 Text="@contact.Key"/>
         }
-    </MudStack>
+    </MudList>
 </MudPaper>
 
-<MudPaper Width="200" Class="pa-3 ma-3" Elevation="23">
+<MudPaper Width="250" Class="pa-3 ma-3" Elevation="23">
     <MudStack AlignItems="AlignItems.Center">
-        <MudStack Row="true">
-            <MudText>Contact</MudText>
-            <MudIcon Icon="@Icons.Material.Filled.Mail"></MudIcon>
-        </MudStack>
-        <MudText>marcel-sigl@gmx.de</MudText>
+        <MudText Typo="Typo.subtitle1">Contact</MudText>
+        <MudDivider Class="my-1 " Style="width: 100%"/>
+        <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Mail" Href="mailto:marcel-sigl@gmx.de">
+            marcel-sigl@gmx.de
+        </MudButton>
     </MudStack>
 </MudPaper>
 
 @code {
 
+    private List<PageData> _pages =
+    [
+        new()
+        {
+            Name = "Home",
+            Icon = Icons.Material.Filled.Home,
+            Link = "/",
+        },
+        new()
+        {
+            Name = "Work Experience",
+            Icon = Icons.Material.Filled.Person,
+            Link = "/WorkExperience",
+        },
+        new()
+        {
+            Name = "Projects",
+            Icon = Icons.Material.Filled.Code,
+            Link = "/Projects",
+        },
+        new()
+        {
+            Name = "Photography",
+            Icon = Icons.Material.Filled.Camera,
+            Link = "/Photography",
+        }
+    ];
+
     private readonly Dictionary<string, (string, string)> _contacts = new()
     {
-        ["Instagram"] = ("https://www.instagram.com/marcel_sigl/ ", @Icons.Custom.Brands.Instagram),
+        ["Instagram"] = ("https://www.instagram.com/marcel_sigl/", Icons.Custom.Brands.Instagram),
+        ["GitHub"] = ("https://github.com/YourUsername", Icons.Custom.Brands.GitHub),
+        ["LinkedIn"] = ("https://linkedin.com/in/YourProfile", Icons.Custom.Brands.LinkedIn)
     };
 
 }

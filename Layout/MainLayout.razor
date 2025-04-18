@@ -1,15 +1,22 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
+
+
 
 <MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_myCustomTheme"/>
-
 <MudPopoverProvider/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
-<MudLayout>
 
+<MudLayout>
     <MudAppBar Elevation="23">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="() => DrawerToggle()"/>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
+                       OnClick="() => DrawerToggle()"/>
         <MudSpacer/>
+        <MudToggleIconButton 
+            Icon="@Icons.Material.Filled.LightMode"
+            ToggledIcon="@Icons.Material.Filled.DarkMode"
+            Color="Color.Inherit" ToggledChanged="ToggleDarkMode"/>
     </MudAppBar>
 
     <MudDrawer @bind-Open="_drawerOpen" Elevation="23">
@@ -20,7 +27,15 @@
         <MudContainer MaxWidth="MaxWidth.Large">
             @Body
         </MudContainer>
+        <MudAppBar Bottom="true" Elevation="1" Dense="true" Class="px-4">
+            <MudText Typo="Typo.body2">© @DateTime.Now.Year Marcel Sigl</MudText>
+            <MudSpacer/>
+            <MudText Typo="Typo.body2">Made with Blazor WASM</MudText>
+        </MudAppBar>
     </MudMainContent>
+    <MudScrollToTop Style="z-index:2001;">
+        <MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.KeyboardArrowUp" Size="Size.Small"/>
+    </MudScrollToTop>
 </MudLayout>
 
 @code {
@@ -32,13 +47,24 @@
     }
 
     private bool _isDarkMode;
+
     private MudThemeProvider? _mudThemeProvider;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            _isDarkMode = await _mudThemeProvider?.GetSystemPreference()!;
+            var storedTheme = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "theme-preference");
+            if (!string.IsNullOrEmpty(storedTheme) && bool.TryParse(storedTheme, out var isDark))
+            {
+                _isDarkMode = isDark;
+            }
+            else
+            {
+                _isDarkMode = await _mudThemeProvider?.GetSystemPreference()!;
+                await JSRuntime.InvokeVoidAsync("localStorage.setItem", "theme-preference", _isDarkMode.ToString());
+            }
+
             StateHasChanged();
         }
     }
@@ -64,4 +90,13 @@
             DrawerWidthRight = "300px"
         }
     };
+
+
+    private async Task ToggleDarkMode(bool arg)
+    {
+        _isDarkMode = arg;
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "theme-preference", _isDarkMode.ToString());
+    }
+
 }
+

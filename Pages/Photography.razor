@@ -1,8 +1,8 @@
 ﻿@page "/Photography"
-<MudPaper id="paper1" Class="pa-15 ma-10 " Elevation="23"  gap-4 Style="overflow: hidden">
+<MudPaper id="paper1" Class="pa-15 ma-10 " Elevation="23" gap-4 Style="overflow: hidden">
     <MudStack>
         <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Primary">Gear</MudText>
-        
+
         <MudDivider/>
         @foreach (var item in _gear)
         {
@@ -11,7 +11,7 @@
     </MudStack>
 </MudPaper>
 
-<MudPaper id="paper2" Class="pa-15 ma-10 " Elevation="23"  gap-4 Style="overflow: hidden">
+<MudPaper id="paper2" Class="pa-15 ma-10 " Elevation="23" gap-4 Style="overflow: hidden">
     <MudStack>
         <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Primary">Disclaimer</MudText>
         <MudDivider/>
@@ -21,7 +21,7 @@
     </MudStack>
 </MudPaper>
 
-<MudPaper id="paper3" Class="pa-15 ma-10 " Elevation="23"  gap-4 Style="overflow: hidden">
+<MudPaper id="paper3" Class="pa-15 ma-10 " Elevation="23" gap-4 Style="overflow: hidden">
     <MudStack>
         <MudText Align="Align.Center" Typo="Typo.h3" Color="Color.Primary">Gallaries</MudText>
         <MudDivider/>
@@ -31,7 +31,9 @@
                 <MudItem xs="6">
                     <MudPaper Class="pa-16 ma-2" Elevation="23" Square="true">
                         <MudImage ObjectFit="ObjectFit.Cover" Src=@gallery.Value/>
-                        <MudText Align="Align.Center" Typo="Typo.h5" Color="Color.Primary"Class="position-absolute bottom-0 start-0 p-2 bg-dark " Style="opacity: 0.7;">@gallery.Key</MudText>
+                        <MudText Align="Align.Center" Typo="Typo.h5" Color="Color.Primary"
+                                 Class="position-absolute bottom-0 start-0 p-2 bg-dark "
+                                 Style="opacity: 0.7;">@gallery.Key</MudText>
                     </MudPaper>
                 </MudItem>
             }
@@ -43,7 +45,6 @@
 
     private Dictionary<string, string> _gallaries = new()
     {
-       
     };
 
     private readonly List<string> _gear =

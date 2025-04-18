@@ -1,36 +1,21 @@
 ﻿@page "/"
 
-@inject IJSRuntime JsRuntime
-
-<MudPaper id="paper1" Class="pa-15 ma-10 " Elevation="23"  gap-4 >
+<MudPaper Class="pa-15 ma-10 fade-in-anim" Elevation="23">
     <MudStack Justify="Justify.Center">
-            
-        <MudText Typo="Typo.h2" Align="Align.Center" Color="Color.Primary">Marcel Sigl</MudText>
-        
-        <MudDivider/>
-        
+        <MudText Typo="Typo.h2" Align="Align.Center" Color="Color.Primary"
+                 Class="grow-side-anim">
+            Marcel Sigl
+        </MudText>
+
+        <MudDivider Class="grow-side-anim"/>
+
         <MudText Typo="Typo.h5" Align="Align.Center">
             <ul>
-                <li>Software Dev</li>
-                <li>Photographer</li>
-                <li>Gamer</li>
-                <li>3D-Artist</li>
+                <li class="slide-right-anim">Software Dev</li>
+                <li class="slide-right-anim">Photographer</li>
+                <li class="slide-right-anim">Gamer</li>
+                <li class="slide-right-anim">3D-Artist</li>
             </ul>
         </MudText>
     </MudStack>
 </MudPaper>
-
-
-@code
-{
-    private DotNetObjectReference<Home>? _dotNetHelper;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            _dotNetHelper = DotNetObjectReference.Create(this);
-            await JsRuntime.InvokeVoidAsync("detectScroll", "paper1", _dotNetHelper);
-        }
-    }
-}
