@@ -4,7 +4,7 @@ using HomePage.Models;
 
 namespace HomePage.Data;
 
-public class ProjectController
+public class ProjectContainer
 {
     public List<ProjectData> Projects { get; set; } =
     [

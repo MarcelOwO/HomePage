@@ -1,0 +1,9 @@
+﻿<MudText Color="Color.Primary" Typo="Typo.h3">@ProjectName</MudText>
+<MudDivider/>
+@ChildContent
+
+@code {
+    [Parameter] public string? ProjectName { get; set; }
+    [Parameter] public string? Description { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

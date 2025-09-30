@@ -28,6 +28,6 @@ builder.Services.AddScoped(sp =>
     return client;
 });
 
-builder.Services.AddSingleton<ProjectController>();
+builder.Services.AddSingleton<ProjectContainer>();
 
 await builder.Build().RunAsync();
