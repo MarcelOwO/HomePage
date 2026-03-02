@@ -1,6 +1,6 @@
 ﻿@using HomePage.Models
 
-<MudPaper Width="250" Class="pa-3 ma-3" Elevation="23">
+<MudPaper Width="250" Class="pa-3 ma-3" Elevation="5">
     <MudNavMenu Color="Color.Primary" Rounded="true" Dense="true">
         @foreach (var pageData in _pages)
         {
@@ -11,7 +11,7 @@
     </MudNavMenu>
 </MudPaper>
 
-<MudPaper Width="250" Class="pa-3 ma-3" Elevation="23">
+<MudPaper Width="250" Class="pa-3 ma-3" Elevation="5">
     <MudText Typo="Typo.subtitle1">Connect</MudText>
     <MudDivider Class="mb-2"/>
     <MudList T="string" Dense="true" Padding="false">
@@ -22,12 +22,12 @@
     </MudList>
 </MudPaper>
 
-<MudPaper Width="250" Class="pa-3 ma-3" Elevation="23">
+<MudPaper Width="250" Class="pa-3 ma-3" Elevation="5">
     <MudStack AlignItems="AlignItems.Center">
         <MudText Typo="Typo.subtitle1">Contact</MudText>
         <MudDivider Class="my-1 " Style="width: 100%"/>
-        <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Mail" Href="mailto:marcel-sigl@gmx.de">
-            marcel-sigl@gmx.de
+        <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Mail" Href="mailto:contact@marcel-sigl.dev">
+            contact@marcel-sigl.dev
         </MudButton>
     </MudStack>
 </MudPaper>

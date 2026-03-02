@@ -2,45 +2,66 @@
 
 @inject IJSRuntime JSRuntime
 
-
-
 <MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_myCustomTheme"/>
 <MudPopoverProvider/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
 <MudLayout>
-    <MudAppBar Elevation="23">
+   @if (_shaderEnabled)
+   {
+       <canvas id="shaderCanvas"
+               style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;"></canvas>
+
+       <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+                backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
+                z-index: -1; pointer-events: none;"></div>      
+   } 
+
+    
+    <MudAppBar Elevation="5">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
                        OnClick="() => DrawerToggle()"/>
+        
         <MudSpacer/>
-        <MudToggleIconButton 
+        <MudToggleIconButton
             Icon="@Icons.Material.Filled.LightMode"
             ToggledIcon="@Icons.Material.Filled.DarkMode"
             Color="Color.Inherit" ToggledChanged="ToggleDarkMode"/>
+        
+        <MudButton OnClick="async () => await ToggleShader()">
+        <MudText>Toggle Shader</MudText>    
+        </MudButton>
+
+        
     </MudAppBar>
 
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="23">
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="5">
         <NavMenu/>
     </MudDrawer>
 
-    <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.Large">
+    <MudMainContent Class="relative">
+
+        <MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
             @Body
         </MudContainer>
-        <MudAppBar Bottom="true" Elevation="1" Dense="true" Class="px-4">
+
+
+        <MudAppBar Bottom="true" Elevation="5" Dense="true" Class="px-4">
             <MudText Typo="Typo.body2">© @DateTime.Now.Year Marcel Sigl</MudText>
             <MudSpacer/>
             <MudText Typo="Typo.body2">Made with Blazor WASM</MudText>
         </MudAppBar>
     </MudMainContent>
     <MudScrollToTop Style=" margin-bottom:50px; z-index:2001;">
-        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.KeyboardArrowUp" IconColor="Color.Dark" Size="Size.Small"/>
+        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.KeyboardArrowUp" IconColor="Color.Dark"
+                Size="Size.Small"/>
     </MudScrollToTop>
 </MudLayout>
 
 @code {
     bool _drawerOpen = true;
+    bool _shaderEnabled = true;
 
     void DrawerToggle()
     {
@@ -56,6 +77,7 @@
         if (firstRender)
         {
             var storedTheme = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "theme-preference");
+
             if (!string.IsNullOrEmpty(storedTheme) && bool.TryParse(storedTheme, out var isDark))
             {
                 _isDarkMode = isDark;
@@ -65,6 +87,8 @@
                 _isDarkMode = await _mudThemeProvider?.GetSystemPreference()!;
                 await JSRuntime.InvokeVoidAsync("localStorage.setItem", "theme-preference", _isDarkMode.ToString());
             }
+
+            await JSRuntime.InvokeVoidAsync("initShader", "shaderCanvas");
 
             StateHasChanged();
         }
@@ -95,8 +119,21 @@
 
     private async Task ToggleDarkMode(bool arg)
     {
-        _isDarkMode = arg;
+        _isDarkMode = !arg;
         await JSRuntime.InvokeVoidAsync("localStorage.setItem", "theme-preference", _isDarkMode.ToString());
+    }
+
+    private async Task ToggleShader()
+    {
+        _shaderEnabled = !_shaderEnabled;
+
+        if (_shaderEnabled)
+        {
+            StateHasChanged();
+            await Task.Delay(100);
+            await JSRuntime.InvokeVoidAsync("initShader", "shaderCanvas");
+            
+        }
     }
 
 }

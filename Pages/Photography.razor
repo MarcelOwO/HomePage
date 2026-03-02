@@ -1,5 +1,12 @@
 ﻿@page "/Photography"
-<MudPaper id="paper1" Class="pa-15 ma-10 " Elevation="23" gap-4 Style="overflow: hidden">
+
+<MudPaper Class="pa-15 ma-10" Elevation="5">
+    <MudStack>
+        <MudText Typo="Typo.h2" Color="Color.Primary" Class="mb-2 project-title">Photography</MudText>
+    </MudStack>
+</MudPaper>
+
+<MudPaper id="paper1" Class="pa-15 ma-10 " Elevation="5" gap-4 Style="overflow: hidden">
     <MudStack>
         <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Primary">Gear</MudText>
 
@@ -11,17 +18,17 @@
     </MudStack>
 </MudPaper>
 
-<MudPaper id="paper2" Class="pa-15 ma-10 " Elevation="23" gap-4 Style="overflow: hidden">
+<MudPaper id="paper2" Class="pa-15 ma-10 " Elevation="5" gap-4 Style="overflow: hidden">
     <MudStack>
         <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Primary">Disclaimer</MudText>
         <MudDivider/>
         <MudText Typo="Typo.body1">
-            Currently saving up for NAS
+            This page is still work in progress, as I am still in the process of organizing and uploading my photos. I will be adding more content and galleries in the future, so stay tuned!
         </MudText>
     </MudStack>
 </MudPaper>
 
-<MudPaper id="paper3" Class="pa-15 ma-10 " Elevation="23" gap-4 Style="overflow: hidden">
+<MudPaper id="paper3" Class="pa-15 ma-10 " Elevation="5" gap-4 Style="overflow: hidden">
     <MudStack>
         <MudText Align="Align.Center" Typo="Typo.h3" Color="Color.Primary">Gallaries</MudText>
         <MudDivider/>
@@ -29,7 +36,7 @@
             @foreach (var (link,description) in _gallaries)
             {
                 <MudItem xs="6">
-                    <MudPaper Class="pa-16 ma-2" Elevation="23" Square="true">
+                    <MudPaper Class="pa-16 ma-2" Elevation="5" Square="true">
                         <MudImage ObjectFit="ObjectFit.Cover" Src=@link/>
                         <MudText Align="Align.Center" Typo="Typo.h5" Color="Color.Primary"
                                  Class="position-absolute bottom-0 start-0 p-2 bg-dark "
@@ -40,7 +47,6 @@
         </MudGrid>
     </MudStack>
 </MudPaper>
-
 @code {
 
     private readonly List<(string link, string description)> _gallaries = new()
@@ -50,8 +56,9 @@
 
     private readonly List<string> _gear =
     [
-        "Camera: Sony A7R4",
-        "Lens: Sigma 24-70mm f2.8 DG DN | Art",
+        "Camera: Sony A7r4",
+        "Lens 1: Sigma 24-70mm f2.8 DG DN | Art",
+        "Lens 2: Samyang 85mm f1.4 AF Series II",
         "Tripod: Rollei",
         "Gimbal: DJI RS 4",
         "Flash: Sony HVL-F46RM",
