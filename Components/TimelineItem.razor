@@ -1,35 +1,39 @@
-﻿<MudTimelineItem Color="Color.Primary" Size="Size.Medium" Elevation="5" Class="timeline-item" >
-    <ItemDot>
-        <MudIcon Icon="@Icon" Color="Color.Secondary"/>
-    </ItemDot>
-    <ItemOpposite>
-    </ItemOpposite>
-    <ItemContent>
-        <MudCard Elevation="5" Outlined="true" Class="timeline-card">
-            <MudCardHeader>
-                <CardHeaderContent>
-                    <MudText Typo="Typo.h6" Color="Color.Secondary">@Title</MudText>
-                    <MudText Typo="Typo.body2" Class="date-range">@Period</MudText>
-                </CardHeaderContent>
-            </MudCardHeader>
-            <MudCardContent>
-                <MudText>@Description</MudText>
-            </MudCardContent>
-            <MudCardActions>
-                <MudButton Variant="Variant.Text" EndIcon="@Icons.Material.Filled.OpenInNew"
-                           Color="Color.Primary" Href="@OrganizationUrl">
-                    @Organization
-                </MudButton>
-            </MudCardActions>
-        </MudCard>
-    </ItemContent>
+﻿﻿<MudTimelineItem
+  Color="Color.Primary"
+  Size="Size.Medium"
+  Elevation="5"
+  Class="timeline-item"
+>
+  <ItemDot>
+    <MudIcon Icon="@Icon" Color="Color.Secondary" />
+  </ItemDot>
+  <ItemOpposite> </ItemOpposite>
+  <ItemContent>
+    <MudCard Elevation="5" Outlined="true" Class="timeline-card">
+      <MudCardHeader>
+        <CardHeaderContent>
+          <MudText Typo="Typo.h6" Color="Color.Secondary">@Title</MudText>
+          <MudText Typo="Typo.body2" Class="date-range">@Period</MudText>
+        </CardHeaderContent>
+      </MudCardHeader>
+      <MudCardContent>
+        <MudText>@Description</MudText>
+      </MudCardContent>
+      <MudCardActions>
+        <MudButton
+          Variant="Variant.Text"
+          EndIcon="@Icons.Material.Filled.OpenInNew"
+          Color="Color.Primary"
+          Href="@OrganizationUrl"
+        >
+          @Organization
+        </MudButton>
+      </MudCardActions>
+    </MudCard>
+  </ItemContent>
 </MudTimelineItem>
 
-@code {
-    [Parameter] public string Period { get; set; }
-    [Parameter] public string Title { get; set; }
-    [Parameter] public string Description { get; set; }
-    [Parameter] public string Organization { get; set; }
-    [Parameter] public string OrganizationUrl { get; set; }
-    [Parameter] public string Icon { get; set; }
-}
+@code { [Parameter] public string Period { get; set; } [Parameter] public string
+Title { get; set; } [Parameter] public string Description { get; set; }
+[Parameter] public string Organization { get; set; } [Parameter] public string
+OrganizationUrl { get; set; } [Parameter] public string Icon { get; set; } }
