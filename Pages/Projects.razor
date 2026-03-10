@@ -8,13 +8,13 @@
 @inject IJSRuntime JsRuntime
 
 
-    <MudPaper Class="pa-15 ma-10" Elevation="5">
+    <MudPaper Class="ma-2 ma-md-10 pa-4 pa-md-15" Elevation="5">
         <MudStack>
             <MudText Typo="Typo.h2" Color="Color.Primary" Class="mb-2 project-title">Random Projects</MudText>
         </MudStack>
     </MudPaper>
 
-    <MudGrid Spacing="4" Class="pa-10">
+    <MudGrid Spacing="4" Class="pa-2 pa-md-10">
         @foreach (ProjectData project in _projects)
         {
             <MudItem xs="12" sm="6" md="4">
